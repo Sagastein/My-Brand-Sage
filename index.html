@@ -1,227 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/main.desktop.css" />
-    <link
-      rel="stylesheet"
-      media="screen and (max-width: 720px)"
-      href="./css/main.mobile.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/891622f836.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Saga Blog</title>
-  </head>
-  <body>
-    <main class="main-container">
-      <header>
-        <nav class="nav-container">
-          <div class="nav-top">
-            <div class="nav-logo">
-              <img src="./assets/logo.png" alt="logo" />
-              <div>
-                <p>sage</p>
-                <p>ishimwe</p>
-              </div>
-            </div>
-            <div class="nav-hamburger">
-              <svg
-                width="24"
-                height="24"
-                xmlns="http://www.w3.org/2000/svg"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              >
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"
-                  fill="#000"
-                />
-              </svg>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.desktop.css" />
+  <link rel="stylesheet" media="screen and (max-width: 720px)" href="./css/main.mobile.css" />
+  <script src="https://kit.fontawesome.com/891622f836.js" crossorigin="anonymous"></script>
+  <title>Sage Blog</title>
+</head>
+
+<body>
+  <main class="main-container">
+    <header>
+      <nav class="nav-container">
+        <div class="nav-top">
+          <div class="nav-logo">
+            <img src="./assets/logo.png" alt="logo" />
+            <div>
+              <p>sage</p>
+              <p>ishimwe</p>
             </div>
           </div>
-          <!-- hamber menu svg -->
+          <div class="nav-hamburger">
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" fill="#000" />
+            </svg>
+          </div>
+        </div>
+        <!-- hamber menu svg -->
 
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
-            <button class="nav-btn">Get a Quote</button>
-          </ul>
-        </nav>
-      </header>
-      <section class="home-section">
-        <aside class="hero-image"><img src="./assets/bannerImage.png" /></aside>
-        <aside
-          style="
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+          <button class="nav-btn">Get a Quote</button>
+        </ul>
+      </nav>
+    </header>
+    <section class="home-section">
+      <aside class="hero-image"><img src="./assets/bannerImage.png" /></aside>
+      <aside style="
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 10px;
-          "
-        >
-          <div class="bio">
-            <div class="line"></div>
-            <div class="hero-names">
-              <p>Software</p>
-              <p>Developer, Designer</p>
-            </div>
+          ">
+        <div class="bio">
+          <div class="line"></div>
+          <div class="hero-names">
+            <p>Software</p>
+            <p>Developer, Designer</p>
           </div>
-          <div class="hero-greetings">
-            <h1>Hello, I'm</h1>
-            <h1>ishimwe <span>Sage</span></h1>
-          </div>
-          <p class="hero-description">
-            Hello, I'm passionate about technology, AI, Penetration Testing, and
-            freelancing my skills for real-world impact
-          </p>
-          <div class="hero-btns">
-            <button class="hero-btn-touch">Get in Touch</button>
-            <button class="hero-btn-cv">Download CV</button>
-          </div>
-        </aside>
-      </section>
-      <article class="connect-with-me">
-        <p>connect with me:</p>
-        <a href="#" target="_blank"
-          ><i class="fa fa-lg fa-brands fa-github"></i
-        ></a>
-        <a href="#" target="_blank">
-          <i class="fa fa-lg fa-brands fa-twitter"></i>
-        </a>
-        <a href="http://" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-lg fa-brands fa-linkedin"></i>
-        </a>
-        <a href="http://" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-lg fa-brands fa-figma"></i>
-        </a>
-        <a href="http://" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-lg fa-brands fa-instagram"></i>
-        </a>
-        <a href="http://" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-lg fa-brands fa-pinterest-p"></i>
-        </a>
-      </article>
-      <section class="about-me">
-        <h1 class="about-me-header">About me</h1>
-        <div class="about-container">
-          <aside>
-            <img src="./assets/aboutMeImage.png" alt="ishimwe-sage-profile" />
-          </aside>
-          <aside>
-            <div class="about-cards">
-              <div class="about-card">
-                <i class="fa fa-2xl fa-solid fa-award"></i>
-                <h1>Experience</h1>
-                <div class="about-card-text">
-                  <p>2+ years</p>
-                  <p>Full-stack</p>
-                  <p>Developer</p>
-                </div>
-              </div>
-              <div class="about-card">
-                <i class="fa fa-2xl fa-solid fa-book-open-reader"></i>
-                <h1>Education</h1>
-                <div class="about-card-text">
-                  <p>IT B.sc.</p>
-                  <p>Bachelors</p>
-                  <p>Degree</p>
-                </div>
-              </div>
-            </div>
-            <p>
-              I'm a passionate software developer with a knack for
-              problem-solving and a curiosity that drives me to explore new
-              technologies. With a strong foundation in coding and a love for
-              creating practical solutions, I'm dedicated to turning ideas into
-              functional software.”
-            </p>
-          </aside>
         </div>
-      </section>
-      <section class="services-container">
-        <h1>Services</h1>
-        <p>
-          Merging Vision with Function: Crafting Experiences, Code, and Security
+        <div class="hero-greetings">
+          <h1>Hello, I'm</h1>
+          <h1>ishimwe <span>Sage</span></h1>
+        </div>
+        <p class="hero-description">
+          Hello, I'm passionate about technology, AI, Penetration Testing, and
+          freelancing my skills for real-world impact
         </p>
-        <main class="service-cards">
-          <div class="service-card">
-            <header>
-              <i class="fa fa-2xl fa-solid fa-pen-nib"></i>
-              <span>01</span>
-            </header>
-            <h3>UI/UX Design</h3>
-            <p>
-              I design user interfaces and create user experiences that are
-              intuitive, easy to use, modern, and visually appealing.
-            </p>
+        <div class="hero-btns">
+          <button class="hero-btn-touch">Get in Touch</button>
+          <button class="hero-btn-cv">Download CV</button>
+        </div>
+      </aside>
+    </section>
+    <article class="connect-with-me">
+      <p>connect with me:</p>
+      <a href="#" target="_blank"><i class="fa fa-lg fa-brands fa-github"></i></a>
+      <a href="#" target="_blank">
+        <i class="fa fa-lg fa-brands fa-twitter"></i>
+      </a>
+      <a href="http://" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa-lg fa-brands fa-linkedin"></i>
+      </a>
+      <a href="http://" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa-lg fa-brands fa-figma"></i>
+      </a>
+      <a href="http://" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa-lg fa-brands fa-instagram"></i>
+      </a>
+      <a href="http://" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa-lg fa-brands fa-pinterest-p"></i>
+      </a>
+    </article>
+    <section class="about-me">
+      <h1 class="about-me-header">About me</h1>
+      <div class="about-container">
+        <aside>
+          <img src="./assets/aboutMeImage.png" alt="ishimwe-sage-profile" />
+        </aside>
+        <aside>
+          <div class="about-cards">
+            <div class="about-card">
+              <i class="fa fa-2xl fa-solid fa-award"></i>
+              <h1>Experience</h1>
+              <div class="about-card-text">
+                <p>2+ years</p>
+                <p>Full-stack</p>
+                <p>Developer</p>
+              </div>
+            </div>
+            <div class="about-card">
+              <i class="fa fa-2xl fa-solid fa-book-open-reader"></i>
+              <h1>Education</h1>
+              <div class="about-card-text">
+                <p>IT B.sc.</p>
+                <p>Bachelors</p>
+                <p>Degree</p>
+              </div>
+            </div>
           </div>
-          <div class="service-card">
-            <header>
-              <i class="fa fa-2xl fa-solid fa-code"></i>
-              <span>02</span>
-            </header>
+          <p class="about-me-text">
+            I'm a passionate software developer with a knack for
+            problem-solving and a curiosity that drives me to explore new
+            technologies. With a strong foundation in coding and a love for
+            creating practical solutions, I'm dedicated to turning ideas into
+            functional software.”
+          </p>
+        </aside>
+      </div>
+    </section>
+    <section class="services-container">
+      <h1>Services</h1>
+      <p>
+        Merging Vision with Function: Crafting Experiences, Code, and Security
+      </p>
+      <main class="service-cards">
+        <div class="service-card">
+          <header>
+            <i class="fa fa-2xl fa-solid fa-pen-nib"></i>
+            <span>01</span>
+          </header>
+          <h3>UI/UX Design</h3>
+          <p>
+            I design user interfaces and create user experiences that are
+            intuitive, easy to use, modern, and visually appealing.
+          </p>
+        </div>
+        <div class="service-card">
+          <header>
+            <i class="fa fa-2xl fa-solid fa-code"></i>
+            <span>02</span>
+          </header>
 
-            <h3>Fullstack Development</h3>
-            <p>
-              I create responsive websites that allow the user to experience
-              your website in the best and most appropriate way suited to the
-            </p>
-          </div>
-          <div class="service-card">
-            <header>
-              <i class="fa fa-2xl fa-solid fa-mobile"></i>
-              <span>03</span>
-            </header>
+          <h3>Fullstack Development</h3>
+          <p>
+            I create responsive websites that allow the user to experience
+            your website in the best and most appropriate way suited to the
+          </p>
+        </div>
+        <div class="service-card">
+          <header>
+            <i class="fa fa-2xl fa-solid fa-mobile"></i>
+            <span>03</span>
+          </header>
 
-            <h3>Mobile Development</h3>
-            <p>
-              I develop mobile applications for Android and iOS operating
-              systems, using the same codebase for both platforms.
-            </p>
-          </div>
+          <h3>Mobile Development</h3>
+          <p>
+            I develop mobile applications for Android and iOS operating
+            systems, using the same codebase for both platforms.
+          </p>
+        </div>
 
-          <div class="service-card">
-            <header>
-              <i class="fa fa-2xl fa-solid fa-lock"></i>
-              <span>04</span>
-            </header>
-            <h3>Penetration Testing</h3>
-            <p>
-              I perform security testing to identify vulnerabilities in your
-              application and provide solutions to fix them.
-            </p>
-          </div>
-        </main>
-      </section>
-      <section class="experience-section">
-        <h1>Experience</h1>
-        <p>
-          explore my work experience, projects, and skills that I have gained
-        </p>
-        <main class="experience-cards">
-          <aside class="experience-card">
-            <h1>Fronted Development</h1>
-            <section class="card-group">
-              <article>
-                <i class="fa fa-map-marker-alt"></i>
-                <div>
-                  <h3>Location</h3>
-                  <p>Kigali, Rwanda</p>
+        <div class="service-card">
+          <header>
+            <i class="fa fa-2xl fa-solid fa-lock"></i>
+            <span>04</span>
+          </header>
+          <h3>Penetration Testing</h3>
+          <p>
+            I perform security testing to identify vulnerabilities in your
+            application and provide solutions to fix them.
+          </p>
+        </div>
+      </main>
+    </section>
+    <section class="experience-section">
+      <h1>Experience</h1>
+      <p>
+        explore my work experience, projects, and skills that I have gained
+      </p>
+      <main class="experience-cards">
+        <aside class="experience-card">
+          <h1>Fronted Development</h1>
+          <section class="card-group">
+            <article>
+              <i class="fa tech-icon fa-brands fa-html5"></i>
+              <div class="tech-desc">
+                <h3>HTML 5</h3>
+                <p>Advanced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-brands tech-icon fa-css3-alt"></i>
+              <div class="tech-desc">
+                <h3>CSS 3</h3>
+                <p>Advanced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-brands tech-icon fa fa-figma"></i>
+              <div class="tech-desc">
+                <h3>Figma</h3>
+                <p>Expdrienced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-brands fa tech-icon fa-js"></i>
+              <div class="tech-desc">
+                <h3>JavaScript</h3>
+                <p>Expdrienced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-brands fa tech-icon fa-react"></i>
+              <div class="tech-desc">
+                <h3>React</h3>
+                <p>Advanced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-brands tech-icon fa-vuejs"></i>
+              <div class="tech-desc">
+                <h3>Vue JS</h3>
+                <p>Intermediate</p>
+              </div>
+            </article>
+          </section>
+        </aside>
+        <aside class="experience-card">
+          <h1>Backend Development</h1>
+          <section class="card-group">
+            <article>
+              <i class="fa-brands tech-icon fa-git-alt"></i>
+              <div class="tech-desc">
+                <h3>Git</h3>
+                <p>Expdrienced</p>
+              </div>
+            </article>
+            <article>
+              <img src="./assets/postgresql.svg" alt="postgresql">
+              <div class="tech-desc">
+                <h3>PostgreSql</h3>
+                <p>Experienced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-brands tech-icon fa-node-js"></i>
+              <div class="tech-desc">
+                <h3>Node JS</h3>
+                <p>Expdrienced</p>
+              </div>
+            </article>
+            <article>
+              <i class="fa-solid tech-icon fa-bolt"></i>
+              <div class="tech-desc">
+                <h3>Fast APi</h3>
+                <p>Intermediate</p>
+              </div>
+            </article>
+            <article>
+              <img class="tech-icon" src="./assets/mongo.svg" alt="mongo">
+              <div class="tech-desc">
+                <h3>Mongo DB</h3>
+                <p>Intermediate</p>
+              </div>
+            </article>
+            <article>
+              <img src="./assets/prisma-orm.svg" alt="prisma-orm">
+              <div class="tech-desc">
+                <h3>Prisma ORM</h3>
+                <p>Experienced</p>
+              </div>
+            </article>
+          </section>
+        </aside>
+    </section>
+    <section class="latest-blog">
+      <h1>Latest Blog</h1>
+      <p>Read my latest blog posts and tutorials</p>
+      <main class="blog-cards">
+        <div class="blog-card">
+          <div class="like"><i class="fa-solid fa-2xl fa-heart"></i> <span>12 k</span></div>
+          <img src="./assets/blog1.jpg" alt="blog-image" />
+          <h3>How to create a website using HTML and CSS</h3>
+          <p>
+            Learn how to create a website using HTML and CSS. This tutorial
+            will help you understand how to create a website from scratch.
+          </p>
+          <article>
+            <span>11 May 2021</span>
+            <a href="./">Read more</a>
+          </article>
+        </div>
+        <div class="blog-card">
+          <div class="like"><i class="fa-solid fa-2xl fa-heart"></i> <span>12 k</span></div>
+          <img src="./assets/blog1.jpg" alt="blog-image" />
+          <h3>How to create a website using HTML and CSS</h3>
+          <p>
+            Learn how to create a website using HTML and CSS. This tutorial
+            will help you understand how to create a website from scratch.
+          </p>
+          <article>
+            <span>11 May 2021</span>
+            <a href="./">Read more</a>
+          </article>
+        </div>
+        <div class="blog-card">
+          <div class="like"><i class="fa-solid fa-2xl fa-heart"></i> <span>12 M</span></div>
+          <img src="./assets/blog1.jpg" alt="blog-image" />
+          <h3>How to create a website using HTML and CSS</h3>
+          <p>
+            Learn how to create a website using HTML and CSS. This tutorial
+            will help you understand how to create a website from scratch.
+          </p>
+          <article>
+            <span>11 May 2021</span>
+            <a href="./">Read more</a>
+          </article>
+        </div>
+      </main>
+      <!-- view more -->
+      <div class="view-more">
+        <a href="#">View More</a>
+      </div>
+
+    </section>
+    <section class="portfolio-section">
+      <h1>Portfolio</h1>
+      <p>Explore my latest projects and designs</p>
+      <main class="portfolio-cards">
+        <div class="portfolio-card">
+          <img src="./assets/blog1.jpg" alt="portfolio-image" />
+          <span>Sunday , 1 Jan 2023</span>
+          <article>
+            <h3>Control System Management</h3>
+            <i class="fa-solid  fa-arrow-up-long fa-rotate-by" style="--fa-rotate-angle: 45deg"></i>
+          </article>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            tincidunt, nunc in tincidunt.
+          </p>
+          <ul class="portfolio-tags">
+            <li>html</li>
+            <li>css</li>
+            <li>Js</li>
+          </ul>
+
+        </div>
+        <div class="portfolio-card">
+          <img src="./assets/blog1.jpg" alt="portfolio-image" />
+          <span>Sunday , 1 Jan 2023</span>
+          <article>
+            <h3>Control System Management</h3>
+            <i class="fa-solid  fa-arrow-up-long fa-rotate-by" style="--fa-rotate-angle: 45deg"></i>
+          </article>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            tincidunt, nunc in tincidunt.
+          </p>
+          <ul class="portfolio-tags">
+            <li>html</li>
+            <li>css</li>
+            <li>Js</li>
+          </ul>
+
+        </div>
+        <div class="portfolio-card">
+          <img src="./assets/blog1.jpg" alt="portfolio-image" />
+          <span>Sunday , 1 Jan 2023</span>
+          <article>
+            <h3>Control System Management</h3>
+            <i class="fa-solid  fa-arrow-up-long fa-rotate-by" style="--fa-rotate-angle: 45deg"></i>
+          </article>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            tincidunt, nunc in tincidunt.
+          </p>
+          <ul class="portfolio-tags">
+            <li>html</li>
+            <li>css</li>
+            <li>Js</li>
+          </ul>
+
+        </div>
+
+      </main>
+
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot dot-active"></div>
+        <div class="dot"></div>
+      </div>
+    </section>
+    <section class="contact-section">
+      <h1>Contact</h1>
+      <p>Get in touch with me</p>
+      <main>
+        <aside>
+          <h1>
+            Connect with Me: Let's Bring Ideas to Life
+          </h1>
+          <p>Feel free to reach out for projects, partnerships, or a friendly chat. If you're around Kicukiro, let's
+            meet up and explore the possibilities over a cup of coffee!</p>
+          <article class="contact-box">
+            <i class="fa-regular fa-xl fa-envelope"></i>
+            <div>
+              <h2>chat with me</h2>
+              <p>ishimwe.sage.3@gmail.com</p>
+            </div>
+          </article>
+          <article class="contact-box">
+            <i class="fa-solid fa-xl fa-phone"></i>
+            <div>
+              <h2>call me</h2>
+              <p>ishimwe.sage.3@gmail.com</p>
+            </div>
+          </article>
+        </aside>
+
+        <aside>
+          <h2>Ready to Collaborate? Let's Connect</h2>
+          <p style="font-size: 14px;">Feel free to reach out for any inquiries, project proposals, or just to say hello. Your message is
+            important to me.</p>
+            <form class="contact-form" action="./" method="post">
+              <div><input type="text" name="name" id="name" placeholder="Name"  />
+              <input type="email" name="email" id="email" placeholder="Email" />
                 </div>
-              </article>
-            </section>
-          </aside>
-          <aside class="experience-card">
-            </aside>
+                <div>
+                  <input type="text" name="subject" placeholder="subject">
+                </div>
+                <div>
+                  <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                </div>
+              
+            </form>
+            <button class="contact-btn">LETS CONNECT  <i class="fa-solid  fa-arrow-right-long fa-rotate-by" style="margin-left: 2px;"></i></button>
+        </aside>
+      </main>
+    </section>
+  </main>
+</body>
 
-      </section>
-    </main>
-  </body>
 </html>
