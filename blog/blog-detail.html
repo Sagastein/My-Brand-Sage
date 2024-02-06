@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sage | Blog</title>
+    <link rel="stylesheet" href="../css/main.desktop.css" />
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 720px)"
+      href="../css/main.mobile.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/891622f836.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <main class="main-container">
+      <nav class="nav-container">
+        <div class="nav-top">
+          <div class="nav-logo">
+            <img src="../assets/logo.png" alt="logo" />
+            <div>
+              <p>sage</p>
+              <p>ishimwe</p>
+            </div>
+          </div>
+          <div class="nav-hamburger">
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"
+                fill="#000"
+              />
+            </svg>
+          </div>
+        </div>
+        <!-- hamber menu svg -->
+
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+          <button class="nav-btn">Get a Quote</button>
+        </ul>
+      </nav>
+    </main>
+
+    <main class="main-container">
+      <div class="blog-image">
+        <img src="../assets/blog1.jpg" alt="blog header" />
+      </div>
+      <section class="blog-head">
+        <article>
+          <h1 class="blog-title">
+            Software Engineer vs Software <br />
+            Developer as a senior
+          </h1>
+          <h6><span>By Sage Ishimwe</span> | <span>May 20, 2024</span></h6>
+        </article>
+        <div class="blog-reactions">
+          <div class="blog-reaction">
+            <i class="fa fa-lg fa-thumbs-up"></i>
+            <p>100</p>
+          </div>
+          <div class="blog-reaction">
+            <i class="fa fa-lg fa-thumbs-down"></i>
+            <p>10</p>
+          </div>
+          <div class="blog-reaction">
+            <i class="fa fa-lg fa-comments"></i>
+            <p>20</p>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <div class="blog-description">
+        <h4 class="first-paragraph">
+          Authentication and Authorization with JWT Access Token and Refresh
+          Token Authentication and authorization are crucial aspects of building
+          secure web applications. One popular approach to implementing
+          authentication and authorization is by using JSON Web Tokens (JWTs)
+          with access tokens and refresh tokens. JWTs are a compact, URL-safe
+          means of representing claims between two parties. They consist of
+          three parts: a header, a payload, and a signature. The header contains
+          information about the type of token and the signing algorithm used.
+          The payload contains the claims, which are statements about an entity
+          and additional data. The signature is used to verify the integrity of
+          the token. Access tokens are short-lived tokens that are issued to
+          authenticated users. They contain information about the user and their
+          permissions. Access tokens are typically included in the Authorization
+          header of API requests to authenticate the user and grant them access
+          to protected resources. Refresh tokens are long-lived tokens that are
+          used to obtain new access tokens when the current one expires. They
+          are securely stored on the client-side and sent to the server to
+          request a new access token. Refresh tokens provide a way to maintain
+          user sessions without requiring the user to reauthenticate every time
+          their access token expires. Implementing authentication and
+          authorization with JWT access tokens and refresh tokens involves
+          several steps. First, the user authenticates with their credentials,
+          such as a username and password. The server verifies the credentials
+          and issues an access token and a refresh token. The access token is
+          then used to authenticate subsequent API requests, while the refresh
+          token is securely stored on the client-side. When the access token
+          expires, the client can send the refresh token to the server to obtain
+          a new access token. The server verifies the refresh token and issues a
+          new access token if it is valid. This process allows the user to
+          maintain their session without having to reauthenticate. Using JWTs
+          for authentication and authorization provides several benefits. They
+          are stateless, meaning the server does not need to store session
+          information, making them scalable and suitable for distributed
+          systems. JWTs are also self-contained, allowing the client to verify
+          the token's authenticity without relying on the server. Additionally,
+          JWTs can be easily integrated with existing authentication systems and
+          are widely supported by libraries and frameworks. In conclusion,
+          implementing authentication and authorization with JWT access tokens
+          and refresh tokens is a secure and efficient way to protect web
+          applications. By using JWTs, developers can ensure that only
+          authenticated and authorized users can access protected resources,
+          while also providing a seamless user experience with session
+          management.
+          <!-- write a blog about authentication and authorizarion with jwt access token and refresh token more than 400 words-->
+        </h4>
+      </div>
+      <section class="comments">
+        <h3>Comments</h3>
+        <div class="comment">
+          <div class="comment-user">
+            <img src="../assets/logo.png" alt="user" />
+            <div>
+              <h5>John Doe</h5>
+              <p>May 20, 2024</p>
+            </div>
+            <div class="reply">
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="-0.5 0 28 28"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <title>reply</title>
+                  <desc>Created with Sketch Beta.</desc>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                    sketch:type="MSPage"
+                  >
+                    <g
+                      id="Icon-Set-Filled"
+                      sketch:type="MSLayerGroup"
+                      transform="translate(-102.000000, -1195.000000)"
+                      fill="#000000"
+                    >
+                      <path
+                        d="M113.983,1202.01 L113.983,1196.11 C114.017,1195.81 113.936,1195.51 113.708,1195.28 C113.312,1194.89 112.67,1194.89 112.274,1195.28 L102.285,1206.24 C102.074,1206.45 101.984,1206.72 101.998,1207 C101.984,1207.27 102.074,1207.55 102.285,1207.76 L112.219,1218.65 C112.59,1218.97 113.271,1219.15 113.708,1218.71 C113.935,1218.49 114.035,1218.29 114,1218 L114,1212 C120.6,1212 126.569,1216.75 127.754,1223.01 C128.552,1221.17 129,1219.15 129,1217.02 C129,1208.73 122.276,1202.01 113.983,1202.01"
+                        id="reply"
+                        sketch:type="MSShapeGroup"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <a href="#">Reply</a>
+            </div>
+          </div>
+          <p>
+            Great article! I've been looking for a clear explanation of JWTs and
+            how to use them for authentication and authorization. This was very
+            helpful. Thanks for sharing!
+          </p>
+        </div>
+        <div class="comment">
+          <div class="comment-user">
+            <img src="../assets/logo.png" alt="user" />
+            <div>
+              <h5>Jane Smith</h5>
+              <p>May 20, 2024</p>
+            </div>
+            <div class="reply">
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="-0.5 0 28 28"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <title>reply</title>
+                  <desc>Created with Sketch Beta.</desc>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                    sketch:type="MSPage"
+                  >
+                    <g
+                      id="Icon-Set-Filled"
+                      sketch:type="MSLayerGroup"
+                      transform="translate(-102.000000, -1195.000000)"
+                      fill="#000000"
+                    >
+                      <path
+                        d="M113.983,1202.01 L113.983,1196.11 C114.017,1195.81 113.936,1195.51 113.708,1195.28 C113.312,1194.89 112.67,1194.89 112.274,1195.28 L102.285,1206.24 C102.074,1206.45 101.984,1206.72 101.998,1207 C101.984,1207.27 102.074,1207.55 102.285,1207.76 L112.219,1218.65 C112.59,1218.97 113.271,1219.15 113.708,1218.71 C113.935,1218.49 114.035,1218.29 114,1218 L114,1212 C120.6,1212 126.569,1216.75 127.754,1223.01 C128.552,1221.17 129,1219.15 129,1217.02 C129,1208.73 122.276,1202.01 113.983,1202.01"
+                        id="reply"
+                        sketch:type="MSShapeGroup"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <a href="#">Reply</a>
+            </div>
+          </div>
+          <p>
+            This is exactly what I needed to understand how to implement
+            authentication and authorization with JWTs. Thanks for breaking it
+            down into simple steps!
+          </p>
+        </div>
+        <div class="comment">
+          <div class="comment-user">
+            <img src="../assets/logo.png" alt="user" />
+            <div>
+              <h5>Robert Johnson</h5>
+              <p>May 20, 2024</p>
+            </div>
+            <div class="reply">
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="-0.5 0 28 28"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <title>reply</title>
+                  <desc>Created with Sketch Beta.</desc>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                    sketch:type="MSPage"
+                  >
+                    <g
+                      id="Icon-Set-Filled"
+                      sketch:type="MSLayerGroup"
+                      transform="translate(-102.000000, -1195.000000)"
+                      fill="#000000"
+                    >
+                      <path
+                        d="M113.983,1202.01 L113.983,1196.11 C114.017,1195.81 113.936,1195.51 113.708,1195.28 C113.312,1194.89 112.67,1194.89 112.274,1195.28 L102.285,1206.24 C102.074,1206.45 101.984,1206.72 101.998,1207 C101.984,1207.27 102.074,1207.55 102.285,1207.76 L112.219,1218.65 C112.59,1218.97 113.271,1219.15 113.708,1218.71 C113.935,1218.49 114.035,1218.29 114,1218 L114,1212 C120.6,1212 126.569,1216.75 127.754,1223.01 C128.552,1221.17 129,1219.15 129,1217.02 C129,1208.73 122.276,1202.01 113.983,1202.01"
+                        id="reply"
+                        sketch:type="MSShapeGroup"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <a href="#">Reply</a>
+            </div>
+          </div>
+          <p>
+            I've been struggling to understand how to use JWTs for
+            authentication and authorization, but this article made it so much
+            clearer. Thank you for sharing your knowledge!
+          </p>
+        </div>
+        <div class="comment">
+          <div class="comment-user">
+            <img src="../assets/logo.png" alt="user" />
+            <div>
+              <h5>Emily Davis</h5>
+              <p>May 20, 2024</p>
+            </div>
+            <div class="reply">
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="-0.5 0 28 28"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <title>reply</title>
+                  <desc>Created with Sketch Beta.</desc>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                    sketch:type="MSPage"
+                  >
+                    <g
+                      id="Icon-Set-Filled"
+                      sketch:type="MSLayerGroup"
+                      transform="translate(-102.000000, -1195.000000)"
+                      fill="#000000"
+                    >
+                      <path
+                        d="M113.983,1202.01 L113.983,1196.11 C114.017,1195.81 113.936,1195.51 113.708,1195.28 C113.312,1194.89 112.67,1194.89 112.274,1195.28 L102.285,1206.24 C102.074,1206.45 101.984,1206.72 101.998,1207 C101.984,1207.27 102.074,1207.55 102.285,1207.76 L112.219,1218.65 C112.59,1218.97 113.271,1219.15 113.708,1218.71 C113.935,1218.49 114.035,1218.29 114,1218 L114,1212 C120.6,1212 126.569,1216.75 127.754,1223.01 C128.552,1221.17 129,1219.15 129,1217.02 C129,1208.73 122.276,1202.01 113.983,1202.01"
+                        id="reply"
+                        sketch:type="MSShapeGroup"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <a href="#">Reply</a>
+            </div>
+          </div>
+          <p>
+            I'm new to web development, and this article was incredibly helpful
+            in explaining how to use JWTs for authentication and authorization.
+            Thank you for writing this!
+          </p>
+        </div>
+        <div class="leave-comment">
+          <h1>Leave a Comment</h1>
+          <textarea cols="15" placeholder="Write Comment"></textarea>
+          <button>Comment</button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <div class="s-logo">
+            <span>S</span>
+          </div>
+          <div>
+            <p>ishimwe sage</p>
+            <p>Software Developer</p>
+          </div>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="./blog/blog.html">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="footer-socials">
+          <a href="#" target="_blank"
+            ><i class="fa fa-lg fa-brands fa-github"></i
+          ></a>
+          <a href="#" target="_blank">
+            <i class="fa fa-lg fa-brands fa-twitter"></i>
+          </a>
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-lg fa-brands fa-linkedin"></i>
+          </a>
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-lg fa-brands fa-figma"></i>
+          </a>
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-lg fa-brands fa-instagram"></i>
+          </a>
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-lg fa-brands fa-pinterest-p"></i>
+          </a>
+        </div>
+      </div>
+      <hr />
+      <div class="footer-credits">
+        <p>&copy; 2024 Sage Ishimwe</p>
+        <p style="font-size: 12px">Designed and Developed by Sage Ishimwe</p>
+      </div>
+    </footer>
+  </body>
+</html>
