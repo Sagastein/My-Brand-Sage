@@ -413,9 +413,8 @@ body {
 .blog-card article a:hover {
   color: var(--coloer-blue);
 }
-.blog-card h3,
-p {
-  padding: 0;
+.blog-card > h3,p {
+  padding: 0 10px;
   text-overflow: clip;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
