@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+    <script
+      src="https://kit.fontawesome.com/891622f836.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <button id="close">X</button>
+        <nav class="sidebar-main">
+          <div>
+            <h1 style="text-align: center; margin: 20px auto">Saga</h1>
+            <ul>
+              <li>
+                <div class="side-links active-link">
+                  <span>
+                    <i class="fa-solid fa-gauge"></i>
+                  </span>
+                  <a href="#" data-section="dashboard">Dashboard</a>
+                </div>
+              </li>
+              <li>
+                <div class="side-links">
+                  <span>
+                    <i class="fas fa-blog"></i>
+                  </span>
+                  <a href="#" data-section="blog">Blog</a>
+                </div>
+              </li>
+              <li>
+                <div class="side-links">
+                  <span>
+                    <i class="fas fa-book-open"></i>
+                  </span>
+                  <a href="#" data-section="message">message</a>
+                </div>
+              </li>
+              <li>
+                <div class="side-links">
+                  <span>
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <a href="#" data-section="users">users</a>
+                </div>
+              </li>
+              <li>
+                <div class="side-links">
+                  <span>
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                  </span>
+                  <a href="#" data-section="settings">settings</a>
+                </div>
+              </li>
+              <li>
+                <div class="side-links">
+                  <span>
+                    <i class="fas fa-sign-out-alt"></i>
+                  </span>
+                  <a href="#" data-section="settings">logout</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button class="add-post-btn">
+            <i class="fas fa-plus"></i>
+            <span>Add Post</span>
+          </button>
+        </nav>
+      </div>
+
+      <div id="main">
+        <div id="content">
+          <nav class="nav-bar">
+            <button id="hamburger">☰</button>
+            <section class="nav-content">
+              <aside class="nav-left">
+                <h1>Admin</h1>
+                <p>Hi,Sage welcome back</p>
+              </aside>
+              <aside class="nav-right">
+                <div class="search-container">
+                  <button><i class="fas fa-search"></i></button>
+                  <input type="text" placeholder="search ..." />
+                </div>
+                <div class="notification-container">
+                  <button class="bell"></button>
+                    <i class="fas fa-bell"></i>
+                  </button>
+                </div>
+                <hr />
+                <article class="profile-and-dropdown-container">
+                  <div class="profile-container">
+                    <img
+                      src="https://i.pravatar.cc/300/24"
+                      alt="profile picture"
+                    />
+  
+                  <div class="dropdown-container">
+                    <div class="dropdown-content">
+                      <a href="#">Profile</a>
+                      <a href="#">Settings</a>
+                      <a href="#">Logout</a>
+                    </div>
+                  </div>
+                </article>
+              </aside>
+            </section>
+          </nav>
+          <section id="blog-section" class="">
+            <h2>blog section</h2>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa
+            eaque laboriosam expedita magnam. Eius nulla asperiores debitis
+            iusto! Velit, quibusdam praesentium?
+          </section>
+          <section id="users-section" class="">
+            <h1>user section</h1>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid,
+            rerum esse ad voluptatibus excepturi nihil ab officiis voluptatum
+            natus totam? Quisquam, quos. Quisquam, quos. Quisquam, quos.
+          </section>
+          <section id="dashboard-section">
+            <h1>dashboard</h1>
+          </section>
+          <section id="settings-section">
+            <h1>settings</h1>
+          </section>
+          <section id="message-section">m1 message</section>
+        </div>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
