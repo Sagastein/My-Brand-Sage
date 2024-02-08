@@ -6,6 +6,8 @@
   --color-blue: #1777e5;
   --text-color: #161d2b;
   --blog-text: #718096;
+  --td-color: #202224;
+  --table-border-color: #d5d5d5;
 }
 * {
   padding: 0;
@@ -128,6 +130,15 @@ body {
 
 #hamburger {
   display: none;
+  width: 40px;
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+#hamburger:hover {
+  color: var(--color-blue);
+  transition: all 0.3s ease-in-out;
 }
 .nav-bar {
   margin-bottom: 20px;
@@ -139,7 +150,7 @@ body {
 .search-container {
   display: flex;
   align-items: center;
-  border: 1px solid var(--blog-text);
+  border: 1px solid var(--table-border-color);
   border-radius: 20px;
   padding: 0 10px;
   margin: 0 20px;
@@ -149,6 +160,7 @@ body {
   outline: none;
   padding: 8px;
   border-radius: 20px;
+  color: var(--td-color);
 }
 .search-container input::placeholder {
   color: var(--blog-text);
@@ -260,15 +272,24 @@ body {
 }
 #blog-section table {
   width: 100%;
-  border-bottom: 1px solid var(--blog-text);
   border-collapse: collapse;
 }
 #blog-section table button {
   background: transparent;
   border: none;
+  cursor: pointer;
+}
+#blog-section table button:hover {
+  color: #0e5a8a;
+  transition: all 0.3s ease-in-out;
+}
+#blog-section .table-container {
+  border: 1px solid var(--table-border-color);
+  border-radius: 10px;
+  margin: 20px 0;
 }
 .fa-trash {
-  color: rgb(231, 58, 58);
+  color: #ef3826;
 }
 #blog-section table img {
   width: 4cap;
@@ -278,11 +299,21 @@ body {
 #blog-section th,
 td,
 tr {
-  border-bottom: 1px solid var(--blog-text);
+  border-top: 1px solid var(--table-border-color);
   padding: 5px;
-  text-align: start;
+  text-align: left;
+  font-weight: 500;
+  color: var(--td-color);
+  font-size: 14px;
+}
+#blog-section th {
   text-transform: capitalize;
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+#blog-section tbody tr:hover {
+  background-color: #c3e4ff67;
+  transition: all 0.3s ease-in-out;
 }
 .blog-pagination {
   display: flex;
@@ -292,12 +323,12 @@ tr {
   margin-top: 20px;
 }
 .blog-pagination > p {
-  color: var(--blog-text);
+  color: var(--td-color);
   text-transform: capitalize;
 }
 .pagination-btn {
   display: flex;
-  border: 1px solid #0e5a8a;
+  border: 1px solid var(--table-border-color);
   border-radius: 5px;
 }
 .pagination-btn button {
@@ -314,26 +345,32 @@ tr {
   color: white;
   transition: all 0.3s ease-in-out;
 }
+.user-container {
+  border: 1px solid var(--table-border-color);
+  border-radius: 10px;
+  margin: 20px 0;
+}
 .user-container table {
   width: 100%;
-  border-bottom: 1px solid var(--blog-text);
   border-collapse: collapse;
 }
-.user-container tr,
-td {
+.user-container > tr,
+td,th {
   padding: 10px;
-  text-align: center;
+  font-size: 14px;
+  color: var(--td-color);
 }
 
 .user-container th {
   text-transform: capitalize;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--blog-text);
+  color: var(--td-color);
+  border-top: none !important;;
 }
 
 td a {
   text-decoration: none;
-  color: var(--color-black);
+  color: var(--td-color);
 }
 .active-status-btn {
   background-color: #00b69b2f;
@@ -385,6 +422,7 @@ td a {
     border-radius: 10px;
     background-color: transparent;
     cursor: pointer;
+    border: none;
   }
 
   #hamburger {

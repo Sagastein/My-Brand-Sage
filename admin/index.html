@@ -79,12 +79,18 @@
     <div id="main">
       <div id="content">
         <nav class="nav-bar">
-          <button id="hamburger">☰</button>
+          
           <section class="nav-content">
-            <aside class="nav-left">
-              <h1>Admin</h1>
+          
+              
+            <aside class="nav-left flex gap-2">
+              <button id="hamburger">☰</button>
+              <div>
+                <h1>Admin</h1>
               <p>Hi,Sage welcome back</p>
+              </div>
             </aside>
+           
             <aside class="nav-right">
               <div class="search-container">
                 <button><i class="fas fa-search"></i></button>
@@ -116,21 +122,22 @@
             <h2>List of blogs</h2>
             <div class="search-container">
               <button><i class="fas fa-search"></i></button>
-              <input type="text" placeholder="search ..." />
+              <input type="text" placeholder="search blog name" />
             </div>
           </header>
-          <table id="blogs-table">
+          <main class="table-container">
+            <table id="blogs-table">
             <thead>
-              <tr>
-                <th colspan="12"></th>
+              <tr style="border: none;">
+                <th style="border: none;" colspan="12"></th>
               </tr>
-              <tr>
-                <th colspan="1">image</th>
-                <th colspan="6">blog title</th>
-                <th colspan="2">category</th>
-                <th colspan="1">comments</th>
-                <th colspan="1">likes</th>
-                <th colspan="2">action</th>
+              <tr style="border-top: none;">
+                <th style="border: none;" colspan="1">Image</th>
+                <th style="border: none;"  colspan="6">Blog title</th>
+                <th style="border: none;"  colspan="2">Category</th>
+                <th style="border: none;"  colspan="1">Comments</th>
+                <th style="border: none;"  colspan="1">Likes</th>
+                <th style="border: none;"  colspan="2">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -144,10 +151,32 @@
                 <td colspan="1">124</td>
                 <td colspan="2">
                   <div
-                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
                     <button class="edit-btn">
                       <i class="fa fa-edit"></i>
                     </button>
+                    <hr>
+                    <button class="delete-btn">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
+                </td>
+                <td colspan="6">Blog about things that are real</td>
+                <td colspan="2">Front-end</td>
+                <td colspan="1">12</td>
+                <td colspan="1">124</td>
+                <td colspan="2">
+                  <div
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
+                    <button class="edit-btn">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <hr>
                     <button class="delete-btn">
                       <i class="fa fa-trash fa-primary"></i>
                     </button>
@@ -164,10 +193,11 @@
                 <td colspan="1">124</td>
                 <td colspan="2">
                   <div
-                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
                     <button class="edit-btn">
                       <i class="fa fa-edit"></i>
                     </button>
+                    <hr>
                     <button class="delete-btn">
                       <i class="fa fa-trash fa-primary"></i>
                     </button>
@@ -184,10 +214,11 @@
                 <td colspan="1">124</td>
                 <td colspan="2">
                   <div
-                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
                     <button class="edit-btn">
                       <i class="fa fa-edit"></i>
                     </button>
+                    <hr>
                     <button class="delete-btn">
                       <i class="fa fa-trash fa-primary"></i>
                     </button>
@@ -204,30 +235,11 @@
                 <td colspan="1">124</td>
                 <td colspan="2">
                   <div
-                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
                     <button class="edit-btn">
                       <i class="fa fa-edit"></i>
                     </button>
-                    <button class="delete-btn">
-                      <i class="fa fa-trash fa-primary"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="1">
-                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
-                </td>
-                <td colspan="6">Blog about things that are real</td>
-                <td colspan="2">Front-end</td>
-                <td colspan="1">12</td>
-                <td colspan="1">124</td>
-                <td colspan="2">
-                  <div
-                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
-                    <button class="edit-btn">
-                      <i class="fa fa-edit"></i>
-                    </button>
+                    <hr>
                     <button class="delete-btn">
                       <i class="fa fa-trash fa-primary"></i>
                     </button>
@@ -240,6 +252,8 @@
             </tbody>
 
           </table>
+          </main>
+          
           <article class="blog-pagination">
             <p>showing 10 of 54</p>
             <aside class="pagination-btn">
@@ -265,8 +279,8 @@
           <main class="user-container">
             <table class="w-full">
               <thead>
-                <tr>
-                  <th>ID</th>
+                <tr style="border: none;">
+                  <th >ID</th>
                   <th colspan="1">Name</th>
                   <th colspan="2">email</th>
                   <th colspan="2">phone number</th>
@@ -276,7 +290,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
+                  <td>0001</td>
                   <td colspan="1">John Doe</td>
                   <td colspan="2"> <a href="mailto:">ishimwe.sage.3@gmail.com</a>  </td>
                   <td colspan="2">+234 123 456 7890</td>
@@ -286,7 +300,7 @@
                   </td>
                 </tr>
                   <tr>
-                  <td>1</td>
+                  <td>0002</td>
                   <td colspan="1">John Doe</td>
                   <td colspan="2"> <a href="mailto:">ishimwe.sage.3@gmail.com</a>  </td>
                   <td colspan="2">+234 123 456 7890</td>
