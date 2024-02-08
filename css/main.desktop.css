@@ -3,7 +3,7 @@
   --color-secondary: #f4f4f4;
   --font-color: #b8b8b8;
   --color-black: #121314;
-  --coloer-blue: #1777e5;
+  --color-blue: #1777e5;
   --text-color: #161d2b;
   --blog-text: #718096;
 }
@@ -21,13 +21,14 @@ body {
   font-weight: 400;
   letter-spacing: 0.5px;
   overflow-x: hidden;
-
+  scroll-behavior: smooth;
   transition: all 0.3s ease;
 }
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  overflow-x: hidden;
 }
 .nav-container {
   display: flex;
@@ -91,7 +92,6 @@ body {
   margin: 20px auto;
   display: grid;
   justify-content: center;
-  border: 1px solid var(--color-primary);
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -105,11 +105,11 @@ body {
   padding: 1px;
   width: 60px;
   height: 1px;
-  background-color: var(--coloer-blue);
-  border: var(--coloer-blue) 1px solid;
+  background-color: var(--color-blue);
+  border: var(--color-blue) 1px solid;
 }
 .bio .hero-names {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
   font-weight: 700;
 }
 .hero-greetings {
@@ -118,7 +118,7 @@ body {
   color: var(--color-black);
 }
 .hero-greetings span {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
 .hero-description {
   font-size: 1.2rem;
@@ -137,8 +137,8 @@ body {
   outline: none;
 }
 .hero-btn-cv {
-  color: var(--coloer-blue);
-  border: 1px solid var(--coloer-blue);
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
   background: white;
 }
 .hero-btn-touch {
@@ -160,7 +160,7 @@ body {
   color: var(--font-color);
 }
 .connect-with-me a:hover {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
 .about-me-header {
   font-size: 30px;
@@ -299,10 +299,9 @@ body {
 }
 .experience-cards {
   display: grid;
-  max-width: 1200px;
   gap: 20px;
   padding: 20px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 .experience-card {
   padding: 10px;
@@ -411,9 +410,17 @@ body {
   text-transform: capitalize;
 }
 .blog-card article a:hover {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
-.blog-card > h3,p {
+.blog-card > h3,
+p {
+  padding: 0 10px;
+  text-overflow: clip;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-card > p {
   padding: 0 10px;
   text-overflow: clip;
   -webkit-line-clamp: 3;
@@ -474,7 +481,7 @@ body {
   font-weight: 200;
   width: 90%;
   margin: 0 auto;
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
 .portfolio-card article {
   display: flex;
@@ -506,8 +513,8 @@ ul {
   border: none;
 }
 .portfolio-tags li:nth-child(1) {
-  color: var(--coloer-blue);
-  border: 1px solid var(--coloer-blue);
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
   background: var(--color-primary);
 }
 .portfolio-tags li:nth-child(2) {
@@ -534,7 +541,7 @@ ul {
 }
 .dots .dot-active {
   margin-top: 2px;
-  background-color: var(--coloer-blue);
+  background-color: var(--color-blue);
 }
 .contact-section > h1 {
   font-size: 30px;
@@ -610,13 +617,14 @@ textarea {
   outline: none;
   border: none;
   margin: 20px auto;
-  background-color: var(--coloer-blue);
+  background-color: var(--color-blue);
   color: var(--color-primary);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .blog-header {
-  background-image: url("../assets/bg-blog.jpg");
+  background: linear-gradient(to bottom, #161d2b, rgba(0, 0, 0, 0.5)),
+    url("../assets/bg-blog.jpg");
   height: 20rem;
   background-size: cover;
   background-position: center;
@@ -624,7 +632,6 @@ textarea {
   justify-content: center;
   align-items: center;
   color: white;
-  backdrop-filter: brightness(0.5);
   margin: 20px 0;
 }
 .blog-header h1 {
@@ -641,7 +648,7 @@ footer {
     #161d2b,
     #161d2b,
     #161d2b,
-    var(--coloer-blue)
+    var(--color-blue)
   );
 }
 .footer-container {
@@ -660,7 +667,7 @@ footer {
 
 .footer-container .footer-logo h1 {
   font-size: 20px;
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
 .footer-container .footer-links {
   display: flex;
@@ -674,7 +681,7 @@ footer {
   transition: all 0.3s ease;
 }
 .footer-container .footer-links a:hover {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
 .footer-container .footer-socials {
   display: flex;
@@ -688,7 +695,7 @@ footer {
   transition: all 0.3s ease;
 }
 .footer-container .footer-socials a:hover {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
 }
 .footer-container .footer-socials i {
   font-size: 20px;
@@ -716,7 +723,7 @@ footer {
 .s-logo {
   padding: 10px 20px;
   border-radius: 10px;
-  background: var(--coloer-blue);
+  background: var(--color-blue);
 }
 .s-logo span {
   font-size: 24px;
@@ -813,7 +820,7 @@ footer {
   border: none;
 
   width: min-content;
-  background-color: var(--coloer-blue);
+  background-color: var(--color-blue);
   color: var(--color-primary);
   cursor: pointer;
   transition: all 0.3s ease;
