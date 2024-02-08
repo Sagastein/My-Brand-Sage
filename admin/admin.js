@@ -31,7 +31,7 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-document.getElementById("dashboard-section").classList.add("active");
+document.getElementById("users-section").classList.add("active");
 const hamburger = document.getElementById("hamburger");
 const closed = document.getElementById("close");
 
@@ -40,4 +40,54 @@ hamburger.addEventListener("click", () => {
 });
 closed.addEventListener("click", () => {
   sidebar.classList.toggle("show");
+});
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var myChart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        label: "views",
+        data: [12, 19, 3, 5, 2, 3],
+        borderColor: "blue", // Set line color to blue
+        borderWidth: 2,
+        fill: false,
+        tension: 0.5,
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+      },
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          labelColor: function (context) {
+            return {
+              borderColor: "darkblue",
+              backgroundColor: "blue",
+            };
+          },
+          labelTextColor: function (context) {
+            return "white";
+          },
+        },
+      },
+    },
+    elements: {
+      point: {
+        radius: 0,
+      },
+    },
+  },
 });
