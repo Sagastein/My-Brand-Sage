@@ -29,12 +29,12 @@ class Navbar extends HTMLElement {
         </div>
 
         <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/index.html#about">About</a></li>
-          <li><a href="/index.html#service">Services</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#service">Services</a></li>
           <li><a href="#">Blog</a></li>
-          <li><a href="/index.html#portfolio">Portfolio</a></li>
-          <li><a href="/index.html#contact">Contact</a></li>
+          <li><a href="../index.html#portfolio">Portfolio</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
           <button class="nav-btn">Get a Quote</button>
         </ul>
       </nav>
