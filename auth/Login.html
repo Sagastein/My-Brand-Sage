@@ -33,7 +33,13 @@
               placeholder="Enter password"
             />
           </div>
-          <button class="login-btn" type="submit">sign in</button>
+          <button
+            onclick="navigateToDashboard()"
+            class="login-btn"
+            type="button"
+          >
+            sign in
+          </button>
           <!-- continue with google use font awesome icon -->
           <button class="login-with-googel-btn" type="button" class="google">
             <svg
@@ -104,5 +110,10 @@
         </form>
       </aside>
     </main>
+    <script>
+      function navigateToDashboard() {
+        window.location.href = "../admin/index.html";
+      }
+    </script>
   </body>
 </html>

@@ -111,7 +111,7 @@
           freelancing my skills for real-world impact
         </p>
         <div class="hero-btns">
-          <button class="hero-btn-touch">Get in Touch</button>
+          <button onclick="navigateToLogin()" class="hero-btn-touch">Get in Touch</button>
           <button class="hero-btn-cv">Download CV</button>
         </div>
       </aside>
@@ -552,6 +552,9 @@
       }, 1000);
     }, 1000);
   });
+  function navigateToLogin() {
+    window.location.href = "./auth/login.html";
+  }
 </script>
 </body>
 
