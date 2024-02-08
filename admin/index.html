@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link rel="stylesheet" href="../css/systemdesign.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/891622f836.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="sidebar">
+      <button id="close">X</button>
+      <nav class="sidebar-main">
+        <div>
+          <h1 style="text-align: center; margin: 20px auto">Saga</h1>
+          <ul>
+            <li>
+              <div class="side-links active-link">
+                <span>
+                  <i class="fa-solid fa-gauge"></i>
+                </span>
+                <a href="#" data-section="dashboard">Dashboard</a>
+              </div>
+            </li>
+            <li>
+              <div class="side-links">
+                <span>
+                  <i class="fas fa-blog"></i>
+                </span>
+                <a href="#" data-section="blog">Blog</a>
+              </div>
+            </li>
+            <li>
+              <div class="side-links">
+                <span>
+                  <i class="fas fa-book-open"></i>
+                </span>
+                <a href="#" data-section="message">message</a>
+              </div>
+            </li>
+            <li>
+              <div class="side-links">
+                <span>
+                  <i class="fas fa-user"></i>
+                </span>
+                <a href="#" data-section="users">users</a>
+              </div>
+            </li>
+            <li>
+              <div class="side-links">
+                <span>
+                  <i class="fas fa-cog" aria-hidden="true"></i>
+                </span>
+                <a href="#" data-section="settings">settings</a>
+              </div>
+            </li>
+            <li>
+              <div class="side-links">
+                <span>
+                  <i class="fas fa-sign-out-alt"></i>
+                </span>
+                <a href="#" data-section="settings">logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <button class="add-post-btn">
+          <i class="fas fa-plus"></i>
+          <span>Add Post</span>
+        </button>
+      </nav>
+    </div>
+
+    <div id="main">
+      <div id="content">
+        <nav class="nav-bar">
+          <button id="hamburger">☰</button>
+          <section class="nav-content">
+            <aside class="nav-left">
+              <h1>Admin</h1>
+              <p>Hi,Sage welcome back</p>
+            </aside>
+            <aside class="nav-right">
+              <div class="search-container">
+                <button><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="search ..." />
+              </div>
+              <div class="notification-container">
+                <button class="bell"></button>
+                <i class="fas fa-bell"></i>
+                </button>
+              </div>
+              <hr />
+              <article class="profile-and-dropdown-container">
+                <div class="profile-container">
+                  <img src="https://i.pravatar.cc/300/24" alt="profile picture" />
+
+                  <div class="dropdown-container">
+                    <div class="dropdown-content">
+                      <a href="#">Profile</a>
+                      <a href="#">Settings</a>
+                      <a href="#">Logout</a>
+                    </div>
+                  </div>
+              </article>
+            </aside>
+          </section>
+        </nav>
+        <section id="blog-section" class="" style="overflow-y: auto; height: 90vh; flex-basis: 1;">
+          <header style="display: flex; align-items: center; justify-content: space-between;">
+            <h2>List of blogs</h2>
+            <div class="search-container">
+              <button><i class="fas fa-search"></i></button>
+              <input type="text" placeholder="search ..." />
+            </div>
+          </header>
+          <table id="blogs-table">
+            <thead>
+              <tr>
+                <th colspan="12"></th>
+              </tr>
+              <tr>
+                <th colspan="1">image</th>
+                <th colspan="6">blog title</th>
+                <th colspan="2">category</th>
+                <th colspan="1">comments</th>
+                <th colspan="1">likes</th>
+                <th colspan="2">action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="1">
+                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
+                </td>
+                <td colspan="6">Blog about things that are real</td>
+                <td colspan="2">Front-end</td>
+                <td colspan="1">12</td>
+                <td colspan="1">124</td>
+                <td colspan="2">
+                  <div
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    <button class="edit-btn">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="delete-btn">
+                      <i class="fa fa-trash fa-primary"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
+                </td>
+                <td colspan="6">Blog about things that are real</td>
+                <td colspan="2">Front-end</td>
+                <td colspan="1">12</td>
+                <td colspan="1">124</td>
+                <td colspan="2">
+                  <div
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    <button class="edit-btn">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="delete-btn">
+                      <i class="fa fa-trash fa-primary"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
+                </td>
+                <td colspan="6">Blog about things that are real</td>
+                <td colspan="2">Front-end</td>
+                <td colspan="1">12</td>
+                <td colspan="1">124</td>
+                <td colspan="2">
+                  <div
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    <button class="edit-btn">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="delete-btn">
+                      <i class="fa fa-trash fa-primary"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
+                </td>
+                <td colspan="6">Blog about things that are real</td>
+                <td colspan="2">Front-end</td>
+                <td colspan="1">12</td>
+                <td colspan="1">124</td>
+                <td colspan="2">
+                  <div
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    <button class="edit-btn">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="delete-btn">
+                      <i class="fa fa-trash fa-primary"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
+                </td>
+                <td colspan="6">Blog about things that are real</td>
+                <td colspan="2">Front-end</td>
+                <td colspan="1">12</td>
+                <td colspan="1">124</td>
+                <td colspan="2">
+                  <div
+                    style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 60px; border-radius: 5px;">
+                    <button class="edit-btn">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="delete-btn">
+                      <i class="fa fa-trash fa-primary"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+
+
+            </tbody>
+
+          </table>
+          <article class="blog-pagination">
+            <p>showing 10 of 54</p>
+            <aside class="pagination-btn">
+              <button>
+                <i class="fa fa-angle-left"></i>
+              </button>
+              <hr>
+              <button>
+                <i class="fa fa-angle-right"></i>
+              </button>
+            </aside>
+          </article>
+
+        </section>
+        <section id="users-section" class="">
+          <h1>user section</h1>
+          <header>
+            <div class="search-container w-25 my-2">
+              <button><i class="fas fa-search"></i></button>
+              <input type="text" placeholder="search ..." />
+            </div>
+          </header>
+          <main class="user-container">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th colspan="1">Name</th>
+                  <th colspan="2">email</th>
+                  <th colspan="2">phone number</th>
+                  <th>number of blogs</th>
+                  <th colspan="2">status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td colspan="1">John Doe</td>
+                  <td colspan="2"> <a href="mailto:">ishimwe.sage.3@gmail.com</a>  </td>
+                  <td colspan="2">+234 123 456 7890</td>
+                  <td>12</td>
+                  <td colspan="2">
+                    <button class="active-status-btn">Active</button>
+                  </td>
+                </tr>
+                  <tr>
+                  <td>1</td>
+                  <td colspan="1">John Doe</td>
+                  <td colspan="2"> <a href="mailto:">ishimwe.sage.3@gmail.com</a>  </td>
+                  <td colspan="2">+234 123 456 7890</td>
+                  <td>12</td>
+                  <td colspan="2">
+                    <button class="blocked-status-btn">Blocked</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </main>
+         
+        </section>
+        <section id="dashboard-section" style="overflow-y: auto; height: 90vh; flex-basis: 1;">
+
+
+          <div class="dashboard-cards">
+            <div class="dashboard-card">
+              <h3>Posts</h3>
+              <p>20</p>
+            </div>
+            <div class="dashboard-card">
+              <h3>Users</h3>
+              <p>20</p>
+            </div>
+            <div class="dashboard-card">
+              <h3>Comments</h3>
+              <p>20</p>
+            </div>
+            <div class="dashboard-card">
+              <h3>Messages</h3>
+              <p>20</p>
+            </div>
+          </div>
+          <article class="chart-container">
+            <h2>View statistic</h2>
+            <canvas id="myChart" style="width:100%; max-height: 400px"></canvas>
+
+          </article>
+          <div class="popular-blog-section">
+            <div style="display: flex;justify-content: space-between; margin: 10px 0; align-items: center;">
+              <h1>Popular blogs</h1>
+              <i class="fa fa-ellipsis-h"></i>
+            </div>
+            <hr>
+            <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
+              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
+                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="https://i.pravatar.cc/300/24/24"
+                  alt="blog1">
+                <div>
+                  <h1 style="text-transform: capitalize;">Blog about things that are real</h1>
+                  <p style="margin: 10px 0;font-size: 15px;color:rgb(67, 85, 85)">12 thursday 2024</p>
+                </div>
+                <p
+                  style="padding: 2px; border: 1px solid pink;border-radius: 4px; background-color: rgba(198, 135, 146, 0.126);color:rgb(186, 132, 176); font-weight: 500;">
+                  Front-end</p>
+                <p
+                  style="padding: 2px; border: 1px solid rgb(97, 225, 38);border-radius: 4px; background-color: rgba(135, 198, 150, 0.126);color:rgb(128, 197, 83); font-weight: 500;">
+                  Back-end</p>
+              </aside>
+              <aside style="display: flex; gap: 20px; align-items: center;">
+                <p>
+                  <i class="fa fa-book-open"></i>
+                  <span>124</span>
+                </p>
+                <p>
+                  <i class="fa fa-eye"></i>
+                  <span>213</span>
+                </p>
+              </aside>
+            </article>
+            <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
+              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
+                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="https://i.pravatar.cc/300/24/24"
+                  alt="blog1">
+                <div>
+                  <h1 style="text-transform: capitalize;">Blog about things that are real</h1>
+                  <p style="margin: 10px 0;font-size: 15px;color:rgb(67, 85, 85)">12 thursday 2024</p>
+                </div>
+                <p
+                  style="padding: 2px; border: 1px solid pink;border-radius: 4px; background-color: rgba(198, 135, 146, 0.126);color:rgb(186, 132, 176); font-weight: 500;">
+                  Front-end</p>
+                <p
+                  style="padding: 2px; border: 1px solid rgb(97, 225, 38);border-radius: 4px; background-color: rgba(135, 198, 150, 0.126);color:rgb(128, 197, 83); font-weight: 500;">
+                  Back-end</p>
+              </aside>
+              <aside style="display: flex; gap: 20px; align-items: center;">
+                <p>
+                  <i class="fa fa-book-open"></i>
+                  <span>124</span>
+                </p>
+                <p>
+                  <i class="fa fa-eye"></i>
+                  <span>213</span>
+                </p>
+              </aside>
+            </article>
+            <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
+              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
+                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="https://i.pravatar.cc/300/24/24"
+                  alt="blog1">
+                <div>
+                  <h1 style="text-transform: capitalize;">Blog about things that are real</h1>
+                  <p style="margin: 10px 0;font-size: 15px;color:rgb(67, 85, 85)">12 thursday 2024</p>
+                </div>
+                <p
+                  style="padding: 2px; border: 1px solid pink;border-radius: 4px; background-color: rgba(198, 135, 146, 0.126);color:rgb(186, 132, 176); font-weight: 500;">
+                  Front-end</p>
+                <p
+                  style="padding: 2px; border: 1px solid rgb(97, 225, 38);border-radius: 4px; background-color: rgba(135, 198, 150, 0.126);color:rgb(128, 197, 83); font-weight: 500;">
+                  Back-end</p>
+              </aside>
+              <aside style="display: flex; gap: 20px; align-items: center;">
+                <p>
+                  <i class="fa fa-book-open"></i>
+                  <span>124</span>
+                </p>
+                <p>
+                  <i class="fa fa-eye"></i>
+                  <span>213</span>
+                </p>
+              </aside>
+            </article>
+          </div>
+
+        </section>
+        <section id="settings-section">
+          <h1>settings</h1>
+        </section>
+        <section id="message-section">
+          <h2>Messages</h2>
+          <main class="mesages-container">
+            <header class="flex justify-between  my-2">
+              <div class="search-container">
+                <button><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="search ..." />
+              </div>
+              <div class="pagination-btn border">
+                <button class="bg-transparent border-none">
+                  <i class="fas fa-filter"></i>
+
+                </button>
+                <hr>
+                <button class="bg-transparent text-center border-none">
+                  <!-- archive -->
+                  <i class="fas fa-archive"></i>
+                </button>
+                <hr>
+                <button class="bg-transparent border-none">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </header>
+            <div class="message-rows">
+              <!-- message rows similar to gmail with checkbox, star, username,message and time -->
+              <div class="message-row flex my-2 border-b items-center justify-between">
+                <div class="flex items-center w-25 gap-8">
+                  <input type="checkbox" class="p-2" name="message" id="message1">
+                  <label for="message1">
+
+                    <i class="fas fa-star" style="color: #FFD56D;"></i>
+                  </label>
+                   <h3>John Doe</h3>
+                </div>
+                <div class="message-content flex justify-between flex-1">
+                  <span>Hey, how are you doing?</span>
+                     <span>12:00 PM</span>
+                </div>
+             
+              </div>
+               <div class="message-row flex my-2 border-b  py-2 items-center justify-between">
+                <div class="flex items-center w-25 gap-8">
+                  <input type="checkbox" class="p-2" name="message" id="message1">
+                  <label for="message1">
+
+                    <i class="fas fa-star" style="color: #FFD56D;"></i>
+                  </label>
+                   <h3>John Doe</h3>
+                </div>
+                <div class="message-content flex justify-between flex-1">
+                  <span>Hey, how are you doing?</span>
+                     <span>2:00 AM</span>
+                </div>
+              </div>
+            </div>
+             <article class="blog-pagination">
+            <p>showing 02 of 54</p>
+            <aside class="pagination-btn">
+              <button>
+                <i class="fa fa-angle-left"></i>
+              </button>
+              <hr>
+              <button>
+                <i class="fa fa-angle-right"></i>
+              </button>
+            </aside>
+          </article>
+          </main>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

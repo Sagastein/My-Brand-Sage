@@ -1,0 +1,251 @@
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.items-center {
+  align-items: center;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+.gap-3 {
+  grid-gap: 0.75rem;
+}
+.gap-5 {
+  grid-gap: 1.25rem;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-auto {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.w-50 {
+  width: 50%;
+}
+.w-45 {
+  width: 45%;
+}
+
+.w-75 {
+  width: 75%;
+}
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation Classes */
+.animate-zoom {
+  animation: zoom 0.2s ease-in-out;
+}
+
+.animate-fade {
+  animation: fade 0.3s ease-in;
+}
+
+.animate-slide {
+  animation: slide 0.4s ease-in-out;
+}
+
+/* Variations */
+.animate-zoom-slow {
+  animation: zoom 0.4s ease-in-out;
+}
+
+.animate-fade-fast {
+  animation: fade 0.15s ease-in;
+}
+
+/* Animation States */
+.animate-zoom-in {
+  animation: zoom-in 0.2s ease-in-out;
+}
+
+.animate-zoom-out {
+  animation: zoom-out 0.2s ease-in-out;
+}
+
+.border-none {
+  border: none;
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.border {
+  border: 1px solid #000;
+}
+.rounded {
+  border-radius: 4px;
+}
+
+.table {
+  border-collapse: collapse;
+  border: 1px solid #eee;
+}
+
+.table-striped tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+.my-2 {
+  margin: 20px 0;
+}
+.border-b {
+  border-bottom: 1px solid #89a1ab;
+  border-spacing: 10px;
+}
+
