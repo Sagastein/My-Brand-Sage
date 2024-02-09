@@ -51,7 +51,7 @@ var myChart = new Chart(ctx, {
       {
         label: "views",
         data: [12, 19, 3, 5, 2, 3],
-        borderColor: "blue", // Set line color to blue
+        borderColor: "#1473E6", // Set line color to blue
         borderWidth: 2,
         fill: false,
         tension: 0.5,
