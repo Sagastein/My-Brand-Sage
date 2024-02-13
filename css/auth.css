@@ -3,7 +3,7 @@
   --color-secondary: #f4f4f4;
   --font-color: #b8b8b8;
   --color-black: #121314;
-  --coloer-blue: #1777e5;
+  --color-blue: #1777e5;
   --text-color: #161d2b;
   --blog-text: #718096;
 }
@@ -37,7 +37,6 @@ main {
 }
 .right h1 {
   text-align: start;
-
 }
 form {
   width: 100%;
@@ -57,7 +56,7 @@ form .input-group input {
   border-radius: 4px;
 }
 .login-btn {
-  background-color: var(--coloer-blue);
+  background-color: var(--color-blue);
   color: #fff;
   padding: 10px;
   border: none;
@@ -71,10 +70,10 @@ form .input-group input {
   background-color: #072446;
   transition: all 0.3s ease;
 }
-.login-with-googel-btn {
+.login-with-google-btn {
   background-color: #a5e4ff;
-  color: var(--coloer-blue);
-  border: 1px solid var(--coloer-blue);
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
   padding: 10px;
   border-radius: 4px;
   font-weight: 700;
@@ -86,10 +85,10 @@ form .input-group input {
   text-transform: capitalize;
 }
 
-.login-with-googel-btn img {
+.login-with-google-btn img {
   width: 20px;
 }
-.login-with-googel-btn:hover {
+.login-with-google-btn:hover {
   background-color: transparent;
   transition: all 0.3s ease;
 }
@@ -100,11 +99,17 @@ form .input-group input {
   align-self: flex-end;
 }
 .create-account-text a {
-  color: var(--coloer-blue);
+  color: var(--color-blue);
   text-decoration: none;
 }
 .create-account-text a:hover {
   text-decoration: underline;
+}
+.error-message {
+  color: red;
+  margin: 5px 0;
+  text-align: left;
+  font-size: 14px;
 }
 /* on mobile hide left section */
 @media (max-width: 768px) {
