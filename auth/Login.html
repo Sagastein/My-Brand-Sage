@@ -5,16 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sage | Login</title>
     <link rel="stylesheet" href="../css/auth.css" />
+    <style>
+      /* Set initial styles for the loading elements */
+      #loading-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 20;
+      }
+
+      #loader {
+        width: 120px;
+        height: 20px;
+        -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) left/20% 100%;
+        background: linear-gradient(#000 0 0) left -25% top 0 /20% 100%
+          no-repeat #ddd;
+
+        mask: linear-gradient(90deg, #000 70%, #0000 0) left/20% 100%;
+        animation: l7 1s infinite steps(6);
+      }
+      @keyframes l7 {
+        100% {
+          background-position: right -25% top 0;
+        }
+      }
+      @keyframes l14 {
+        0% {
+          background-position: calc(100% / -4) 0, calc(100% / 4) 0;
+        }
+        50% {
+          background-position: calc(100% / -4) -14px, calc(100% / 4) 14px;
+        }
+        100% {
+          background-position: calc(100% / 4) -14px, calc(3 * 100% / 4) 14px;
+        }
+      }
+    </style>
   </head>
 
   <body>
+    <div id="loading-wrapper">
+      <div id="loader"></div>
+    </div>
     <main>
       <aside class="left">
         <img src="../assets/login.svg" alt="login" />
       </aside>
       <aside class="right">
         <h1>Welcome back login</h1>
-        <form action="./">
+        <form id="login-form" action="./">
           <div class="input-group">
             <label for="email">Email</label>
             <input
@@ -23,6 +68,7 @@
               name="email"
               placeholder="admin@gmail.com"
             />
+            <p class="error-message"></p>
           </div>
           <div class="input-group">
             <label for="password">Password</label>
@@ -32,16 +78,14 @@
               name="password"
               placeholder="Enter password"
             />
+            <p class="error-message"></p>
           </div>
-          <button
-            onclick="navigateToDashboard()"
-            class="login-btn"
-            type="button"
-          >
+
+          <button id="login-btn" class="login-btn" type="submit">
             sign in
           </button>
           <!-- continue with google use font awesome icon -->
-          <button class="login-with-googel-btn" type="button" class="google">
+          <button class="login-with-google-btn" type="button" class="google">
             <svg
               width="18px"
               height="18px"
@@ -103,17 +147,12 @@
             </svg>
             continue with google
           </button>
-
           <p class="create-account-text">
             Don't have an account? <a href="./signup.html">Sign up</a>
           </p>
         </form>
       </aside>
     </main>
-    <script>
-      function navigateToDashboard() {
-        window.location.href = "../admin/index.html";
-      }
-    </script>
+    <script src="./Auth.js"></script>
   </body>
 </html>
