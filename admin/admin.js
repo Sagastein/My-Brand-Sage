@@ -31,7 +31,9 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-document.getElementById("addBlog-section").classList.add("active");
+
+document.getElementById("dashboard-section").classList.add("active");
+
 const hamburger = document.getElementById("hamburger");
 const closed = document.getElementById("close");
 

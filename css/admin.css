@@ -488,7 +488,6 @@ textarea {
 }
 #addBlog-section form {
   display: grid;
-
   gap: 20px;
 }
 #addBlog-section form > div {
