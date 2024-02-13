@@ -9,9 +9,63 @@
   <link rel="stylesheet" href="../css/systemdesign.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://kit.fontawesome.com/891622f836.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+
+  <style>
+    /* Set initial styles for the loading elements */
+    #loading-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 20;
+    }
+
+
+    #loader {
+      width: 120px;
+      height: 20px;
+      -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) left/20% 100%;
+      background:
+        linear-gradient(#000 0 0) left -25% top 0 /20% 100% no-repeat #ddd;
+
+      mask: linear-gradient(90deg, #000 70%, #0000 0) left/20% 100%;
+      ;
+      animation: l7 1s infinite steps(6);
+    }
+
+    @keyframes l7 {
+      100% {
+        background-position: right -25% top 0
+      }
+    }
+
+    @keyframes l14 {
+      0% {
+        background-position: calc(100%/-4) 0, calc(100%/4) 0
+      }
+
+      50% {
+        background-position: calc(100%/-4) -14px, calc(100%/4) 14px
+      }
+
+      100% {
+        background-position: calc(100%/4) -14px, calc(3*100%/4) 14px
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div id="loading-wrapper">
+    <div id="loader">
+    </div>
+  </div>
   <div id="container">
     <div id="sidebar">
       <button id="close">X</button>
@@ -69,10 +123,13 @@
             </li>
           </ul>
         </div>
-        <button class="add-post-btn">
-          <i class="fas fa-plus"></i>
-          <span>Add Post</span>
-        </button>
+        <div>
+          <a class="add-post-btn" data-section="addBlog">
+            <i class="fas fa-plus"></i>
+            <span>Add Post</span>
+          </a>
+        </div>
+
       </nav>
     </div>
 
@@ -416,7 +473,7 @@
               <aside style="display: flex; gap: 20px; align-items: center;">
                 <p style="font-size: 14px;">
                   <i class="fa fa-book-open"></i>
-                  <span >124</span>
+                  <span>124</span>
                 </p>
                 <p style="font-size: 14px;">
                   <i class="fa fa-eye"></i>
@@ -451,7 +508,7 @@
                 </div>
                 <div class="grid grid-cols-2">
                   <div>
-                     <div class="grid">
+                    <div class="grid">
                       <label for="email">Email</label>
                       <input type="email" name="" id="">
                     </div>
@@ -542,6 +599,59 @@
               </button>
             </aside>
           </article>
+        </section>
+        <section id="addBlog-section">
+          <h1>New Post</h1>
+          <form action="./">
+            <div>
+              <label for="blog-title">
+                Blog Title
+              </label>
+              <input type="text" name="blog-title" id="blog-title">
+            </div>
+            <div>
+              <label for="blog-image">Blog image</label>
+              <div class="blog-image-input-container">
+
+                <button class="add-blog-image-btn">Add Image</button>
+                <input type="file" name="blog-image" id="blog-image" hidden>
+                <p>Or Drag or Drop file</p>
+              </div>
+
+            </div>
+            <div>
+              <label for="blog-content">Blog content</label>
+              <!-- ck editor -->
+              <textarea name="blog-content" id="blog-content-editor"></textarea>
+            </div>
+            <div>
+              <label for="blog-category">
+                Blog Category
+              </label>
+              <select name="blog-category" id="blog-category">
+                <option value="front-end">Front-end</option>
+                <option value="back-end">Back-end</option>
+                <option value="full-stack">Full-stack</option>
+              </select>
+            </div>
+            <div>
+              <div class="switch-container">
+                <label for="publishSwitch">Publish</label>
+                <label class="switch">
+
+
+                  <input type="checkbox" id="publishSwitch">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+
+           <div class="flex justify-between items-center">
+            <button class="create-post-btn" type="button">Create post</button>
+            <button class="cancel-post-btn" type="reset">Cancel</button>
+           </div>
+
+          </form>
         </section>
     </div>
   </div>

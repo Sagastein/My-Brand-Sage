@@ -31,7 +31,7 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-document.getElementById("dashboard-section").classList.add("active");
+document.getElementById("addBlog-section").classList.add("active");
 const hamburger = document.getElementById("hamburger");
 const closed = document.getElementById("close");
 
@@ -91,3 +91,51 @@ var myChart = new Chart(ctx, {
     },
   },
 });
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loading-wrapper");
+  setTimeout(() => {
+    loader.style.opacity = 0;
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 1000);
+  }, 1000);
+});
+ClassicEditor.create(document.querySelector("#blog-content-editor")).catch(
+  (error) => {
+    console.error(error);
+  }
+);
+
+const imageContainer = document.querySelector(".blog-image-input-container");
+
+// Prevent default behavior for drag events
+imageContainer.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  imageContainer.classList.add("drag-over");
+  console.log("Drag Over");
+});
+
+// Handle dropped files
+imageContainer.addEventListener("drop", (e) => {
+  e.preventDefault();
+  imageContainer.classList.remove("drag-over");
+  const files = e.dataTransfer.files;
+  console.log(files);
+  handleDroppedFiles(files);
+});
+
+// Function to handle dropped files
+function handleDroppedFiles(files) {
+  imageContainer.innerHTML = "";
+
+  for (let file of files) {
+    let div = document.createElement("div");
+    let img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    img.style.width = "30px";
+    imageContainer.appendChild(img);
+    div.textContent = file.name;
+    imageContainer.appendChild(div);
+    imageContainer.classList.add("dropped-image");
+  }
+}

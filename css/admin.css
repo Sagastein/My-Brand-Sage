@@ -273,8 +273,9 @@ body {
   color: #8e8e8e;
 }
 #blog-section table {
-  width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
+  overflow-x: auto;
 }
 #blog-section table button {
   background: transparent;
@@ -485,7 +486,147 @@ textarea {
   background-color: #0e5a8a;
   transition: all 0.3s ease-in-out;
 }
+#addBlog-section form {
+  display: grid;
 
+  gap: 20px;
+}
+#addBlog-section form > div {
+  display: grid;
+  flex-direction: column;
+  gap: 10px;
+}
+#addBlog-section form > div label {
+  color: var(--td-color);
+  font-size: 14px;
+  text-transform: capitalize;
+}
+#addBlog-section form > div input,
+textarea,
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d5d5d5;
+  outline: none;
+
+}
+#addBlog-section form > div textarea {
+  height: 30vh;
+}
+
+.ck-editor__editable[role="textbox"] {
+  /* Editing area */
+  min-height: 300px;
+  max-width: 100%;
+}
+.ck-content .image {
+  /* Block images */
+  max-width: 80%;
+  margin: 20px auto;
+}
+.blog-image-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  border: 1px dashed var(--table-border-color);
+  min-height: 100px;
+}
+.blog-image-input-container button {
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #1777e5;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.drag-over {
+  background-color: #f9f9f9;
+  border-color: #3f51b5;
+}
+.dropped-image {
+  border: 2px solid var(--color-blue);
+  border-radius: 10px;
+}
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  border-radius: 17px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 17px;
+}
+
+.slider {
+  border-radius: 17px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 17px;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.create-post-btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #1777e5;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.cancel-post-btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #ff4d4d;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
 @media (max-width: 768px) {
   #sidebar {
     position: absolute;
