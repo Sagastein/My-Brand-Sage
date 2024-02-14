@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/main.desktop.css" />
   <link rel="stylesheet" media="screen and (max-width: 720px)" href="./css/main.mobile.css" />
   <script src="https://kit.fontawesome.com/891622f836.js" crossorigin="anonymous"></script>
+  <link rel="import" href="./components/dialog.html">
   <title>Sage Blog</title>
   <style>
     /* Set initial styles for the loading elements */
@@ -538,6 +539,7 @@
       <p  style="font-size: 12px;">Designed and Developed by Sage Ishimwe</p>
     </div>
   </footer>
+
 <script>
   // on page loading display the loader after loading the page hide the loader
   window.addEventListener("load", function () {
@@ -549,12 +551,10 @@
       }, 1000);
     }, 1000);
   });
-
   function navigateToLogin() {
     window.location.href = "./auth/Login.html";
   }
-
-
+ 
 </script>
 <script src="./js/App.js"></script>
 </body>

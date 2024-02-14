@@ -45,7 +45,7 @@ form {
   flex-direction: column;
 }
 form .input-group {
-  margin: 15px 0;
+  margin: 10px 0;
   position: relative;
 }
 form .input-group input {
@@ -110,6 +110,70 @@ form .input-group input {
   margin: 5px 0;
   text-align: left;
   font-size: 14px;
+}
+#myDialog {
+  margin: auto auto;
+  width: 40%;
+  height: 40%;
+  border: none !important;
+  outline: none !important;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+#myDialog::backdrop {
+  background: linear-gradient(45deg, rgb(11, 11, 11), rgb(74, 71, 65));
+  opacity: 0.8;
+}
+label::after {
+  content: "*";
+  color: red;
+  display: inline;
+}
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#myDialog #closeButton {
+  float: right;
+  margin: 10px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+}
+.check-icon {
+  background-color: #87ff9a;
+  font-size: 20px;
+  color: green;
+  padding: 30px;
+  border-radius: 100%;
+  height: 80px;
+  width: 80px;
+  margin: 20px auto;
+}
+#myDialog #closeButton:hover {
+  background-color: #f4f4f4;
+  border-radius: 100%;
+  transition: all 0.3s ease;
+}
+#myDialog button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin: 20px 0;
+  font-size: 18px;
+  width: 100%;
+  color: #fff;
+  background-color: #87ff9a;
+
+}
+#myDialog button:hover {
+  background-color: #4caf50;
+  transition: all 0.3s ease;
 }
 /* on mobile hide left section */
 @media (max-width: 768px) {

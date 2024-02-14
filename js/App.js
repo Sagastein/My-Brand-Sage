@@ -28,13 +28,8 @@ function handleSubmit() {
   if (email === "") {
     error.innerHTML += "<p>Email is required</p>";
   }
-  //handle invalid email
-  if (email !== "") {
-    var Athos = email.indexOf("@");
-    var topos = email.lastIndexOf(".");
-    if (Athos < 1 || topos < Athos + 2 || topos + 2 >= email.length) {
-      error.innerHTML += "<p>Invalid Email</p>";
-    }
+  if (email.indexOf("@") === -1) {
+    error.innerHTML += "<p>invalid email address</p>";
   }
 
   if (subject === "") {
@@ -44,6 +39,34 @@ function handleSubmit() {
     error.innerHTML += "<p>Message is required</p>";
   }
   if (error.innerHTML === "") {
+    // get all value
+    const date = new Date();
+
+    // Format date
+    const formattedTime = date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    let newMessage = {
+      id: Math.floor(Math.random() * 1000),
+      name,
+      email,
+      subject,
+      message,
+      joined: formattedTime,
+    };
+    let messages = [];
+    let storedMessages = localStorage.getItem("messages");
+    if (storedMessages) {
+      messages = JSON.parse(storedMessages);
+    }
+    messages.push(newMessage);
+    localStorage.setItem("messages", JSON.stringify(messages));
+
+    console.log(newMessage);
+    //get element by tagname form and reset it to empty
+    document.getElementsByTagName("form")[0].reset();
+
     alert("Form Submitted Successfully");
   }
   return false;
