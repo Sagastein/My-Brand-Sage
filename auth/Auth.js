@@ -52,23 +52,32 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
   };
 
   if (isValid) {
-    // If form is valid, you can submit it here
-    console.log("Form is valid");
-    // You can call your navigateToDashboard function here if the form is valid
-    navigateToDashboard();
+    //get email and password values
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    console.log(email, password);
+    // handle authentication get data from local storage and check if exist then set auth to true else invalid credentials
+    var users = JSON.parse(localStorage.getItem("users")) || [];
+    var user = users.find(function (user) {
+      return user.email === email && user.password === password;
+    });
+    if (user) {
+      localStorage.setItem("auth", JSON.stringify(user));
+      navigateToDashboard();
+    } else {
+      alert("Invalid credentials");
+    }
+
+    //navigateToDashboard();
   }
 });
 
-function handleSignUp() {
-  console.log("Sign up form submitted");
-  
-}
-  window.addEventListener("load", function () {
-    const loader = document.getElementById("loading-wrapper");
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loading-wrapper");
+  setTimeout(() => {
+    loader.style.opacity = 0;
     setTimeout(() => {
-      loader.style.opacity = 0;
-      setTimeout(() => {
-        loader.style.display = "none";
-      }, 1000);
+      loader.style.display = "none";
     }, 1000);
-  });
+  }, 1000);
+});
