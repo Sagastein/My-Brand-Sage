@@ -1,3 +1,5 @@
+//check if user is authenticated
+
 const sidebar = document.getElementById("sidebar");
 const content = document.getElementById("content");
 const sections = content.querySelectorAll("section[id]");
@@ -30,7 +32,6 @@ sidebar.addEventListener("click", (event) => {
     console.log("section not found");
   }
 });
-
 
 document.getElementById("dashboard-section").classList.add("active");
 
@@ -94,6 +95,10 @@ var myChart = new Chart(ctx, {
   },
 });
 window.addEventListener("load", function () {
+  var auth = JSON.parse(localStorage.getItem("auth"));
+  if (!auth) {
+    return (window.location.href = "/auth/login.html");
+  }
   const loader = document.getElementById("loading-wrapper");
   setTimeout(() => {
     loader.style.opacity = 0;
@@ -141,3 +146,130 @@ function handleDroppedFiles(files) {
     imageContainer.classList.add("dropped-image");
   }
 }
+
+const tableBody = document
+  .getElementById("users-table")
+  .getElementsByTagName("tbody")[0]; // Target the tbody element
+
+// Check if local storage exists and `users` key is present
+if (localStorage && localStorage.getItem("users")) {
+  const users = JSON.parse(localStorage.getItem("users"));
+
+  // Create table rows dynamically for each user
+  users.forEach((user, i) => {
+    const tableRow = document.createElement("tr");
+
+    const imageCell = document.createElement("td");
+    //imageCell.innerHTML = `<img src="https://i.pravatar.cc/300/${user.id}/24" alt="${user.name} image" />`; // Use user ID for image generation
+    imageCell.textContent = i + 1;
+    const nameCell = document.createElement("td");
+    nameCell.textContent = user.fullName;
+
+    const emailCell = document.createElement("td");
+    emailCell.textContent = user.email;
+
+    const phoneNumber = document.createElement("td");
+    phoneNumber.textContent = user.phoneNumber;
+    const NumberOfBlogs = document.createElement("td");
+    NumberOfBlogs.textContent = 0;
+    const actionsCell = document.createElement("td");
+    actionsCell.innerHTML = '<button class="active-status-btn">Active</button>';
+
+    tableRow.appendChild(imageCell);
+    tableRow.appendChild(nameCell);
+    tableRow.appendChild(emailCell);
+    tableRow.appendChild(phoneNumber);
+    tableRow.appendChild(NumberOfBlogs);
+    tableRow.appendChild(actionsCell);
+
+    tableBody.appendChild(tableRow);
+  });
+} else {
+  // Handle the case where users data is not found in local storage
+  console.warn("No users found in local storage!");
+  // You can display an appropriate message to the user, e.g., "No users available. Add some!"
+}
+const messages = JSON.parse(localStorage.getItem("messages"));
+messages.forEach((message) => {
+  const row = `
+   <a href="#" class="message-row flex items-center justify-between">
+                <div class="flex items-center w-25 gap-8">
+                  <input type="checkbox" class="p-2" name="message" id="message1">
+                  <label for="message1">
+
+                    <i class="fas fa-star" style="color: #FFD56D;"></i>
+                  </label>
+                  <h3>${message.subject}</h3>
+                </div>
+                <div class="message-content flex justify-between flex-1">
+                  <span>${message.message}</span>
+                  <span>${message.joined || 0 - 0}</span>
+                </div>
+
+              </a>
+  `;
+
+  const tbody = document.querySelector(".message-rows");
+  tbody.innerHTML += row;
+});
+
+// function createMessageRow(message) {
+//   const messageRow = document.createElement('a');
+//   messageRow.classList.add('message-row', 'flex', 'items-center','border');
+//   messageRow.href = '#'; // Set href for accessibility
+
+//   const messageContent = document.createElement('div');
+//   messageContent.classList.add('message-content', 'flex', 'justify-between', 'flex-1');
+
+//   // Checkbox
+//   const checkbox = document.createElement('input');
+//   checkbox.type = 'checkbox';
+//   checkbox.classList.add('p-2', 'message-checkbox');
+//   checkbox.name = 'message';
+//   checkbox.id = `message-${message.id}`;
+
+//   // Label
+//   const label = document.createElement('label');
+//   label.for = checkbox.id;
+
+//   // Star icon (use appropriate icon library if necessary)
+//   const starIcon = document.createElement('i');
+//   starIcon.classList.add('fas', 'fa-star', 'message-star');
+//   starIcon.style.color = '#FFD56D'; // Adjust color as needed
+
+//   label.appendChild(starIcon);
+//   messageContent.appendChild(checkbox);
+//   messageContent.appendChild(label);
+
+//   // Sender name
+//   const senderName = document.createElement('h3');
+//   senderName.textContent = message.name;
+
+//   // Message text
+//   const messageText = document.createElement('span');
+//   messageText.textContent = message.subject;
+
+//   // Timestamp
+//   const timestamp = document.createElement('span');
+//   timestamp.textContent = message.;
+
+//   messageContent.appendChild(senderName);
+//   messageContent.appendChild(messageText);
+//   messageContent.appendChild(timestamp);
+
+//   messageRow.appendChild(messageContent);
+
+//   return messageRow;
+// }
+
+// // Check if messages exist in local storage
+// if (messages) {
+//   // Map messages to rows and append them to the container
+//   messages.forEach(message => {
+//     const messageRow = createMessageRow(message);
+//     document.querySelector('.message-rows').appendChild(messageRow);
+//   });
+// } else {
+//   // Handle the case where there are no messages
+//   console.warn('No messages found in local storage!');
+// }
