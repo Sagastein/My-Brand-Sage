@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sage | Login</title>
     <link rel="stylesheet" href="../css/auth.css" />
+    <script type="module" defer src="./google.auth.js"></script>
     <style>
       /* Set initial styles for the loading elements */
       #loading-wrapper {
@@ -85,7 +86,12 @@
             sign in
           </button>
           <!-- continue with google use font awesome icon -->
-          <button class="login-with-google-btn" type="button" class="google">
+          <button
+            class="login-with-google-btn"
+            id="login-with-google-btn"
+            type="button"
+            class="google"
+          >
             <svg
               width="18px"
               height="18px"
@@ -153,9 +159,7 @@
         </form>
       </aside>
     </main>
-    <dialog-element>
-      <p>Some message</p> </dialog-element
-    >;
+
     <script src="./Auth.js"></script>
   </body>
 </html>

@@ -187,7 +187,7 @@ if (localStorage && localStorage.getItem("users")) {
 } else {
   // Handle the case where users data is not found in local storage
   console.warn("No users found in local storage!");
-  // You can display an appropriate message to the user, e.g., "No users available. Add some!"
+
 }
 const messages = JSON.parse(localStorage.getItem("messages"));
 messages.forEach((message) => {
@@ -212,6 +212,11 @@ messages.forEach((message) => {
   const tbody = document.querySelector(".message-rows");
   tbody.innerHTML += row;
 });
+
+function logout() {
+  localStorage.removeItem("auth");
+  window.location.href = "../auth/login.html";
+}
 
 // function createMessageRow(message) {
 //   const messageRow = document.createElement('a');
