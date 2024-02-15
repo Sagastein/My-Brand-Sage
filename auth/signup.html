@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/auth.css" />
+    <script type="module" defer src="./google.auth.js"></script>
+    <script
+      src="https://kit.fontawesome.com/891622f836.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Sage | Sign up</title>
     <style>
-    
       #loading-wrapper {
         position: fixed;
         top: 0;
@@ -57,6 +61,20 @@
     <div id="loading-wrapper">
       <div id="loader"></div>
     </div>
+    <dialog id="myDialog">
+      <!-- <button id="closeButton">
+        <i class="fa-solid fa-2xl fa-xmark"></i>
+      </button> -->
+      <div class="center">
+        <div class="check-icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <p class="text-center text-lg font-bold">
+          Account created successfully
+        </p>
+        <button id="closebtn">Done</button>
+      </div>
+    </dialog>
     <main>
       <aside class="left">
         <img src="../assets/signup.svg" alt="signup" />
@@ -65,12 +83,32 @@
         <h1>Create Account</h1>
         <form id="signup-form">
           <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="ishimwe s"
+            />
+            <p class="error-message"></p>
+          </div>
+          <div class="input-group">
             <label for="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="Admin@gmail.com"
+            />
+            <p class="error-message"></p>
+          </div>
+          <div class="input-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="0788928484"
             />
             <p class="error-message"></p>
           </div>
@@ -97,8 +135,8 @@
           <button class="login-btn" type="submit">Create Account</button>
           <!-- continue with google use font awesome icon -->
           <button
-            onclick="handleSignUp()"
             class="login-with-google-btn"
+            id="login-with-google-btn"
             type="button"
             class="google"
           >
@@ -171,99 +209,6 @@
       </aside>
     </main>
     <script>
-      document
-        .getElementById("signup-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          var email = document.getElementById("email");
-          var password = document.getElementById("password");
-          var Repassword = document.getElementById("Repassword");
-          var isValid = true;
-          var numbers = /^[0-9]+$/;
-          var letters = /^[A-Za-z]+$/;
-
-          // Email validation
-          if (email.value.trim() === "" || !email.value.includes("@")) {
-            isValid = false;
-            email.classList.add("error");
-            email.nextElementSibling.textContent =
-              "Enter a valid email address";
-          } else {
-            email.classList.remove("error");
-            email.nextElementSibling.textContent = "";
-          }
-          if (password.value.trim() === "") {
-            isValid = false;
-            password.classList.add("error");
-            password.nextElementSibling.textContent = "Password is required";
-          }
-          if (Repassword.value.trim() === "") {
-            isValid = false;
-            Repassword.classList.add("error");
-            Repassword.nextElementSibling.textContent =
-              "Confirm Password is required";
-          }
-          email.onkeyup = function () {
-            if (email.value.trim() === "" || !email.value.includes("@")) {
-              isValid = false;
-              email.classList.add("error");
-              email.nextElementSibling.textContent =
-                "Enter a valid email address";
-            } else {
-              email.classList.remove("error");
-              email.nextElementSibling.textContent = "";
-            }
-          };
-          password.onkeyup = function () {
-            console.log(password);
-            if (password.value.trim() === "") {
-              isValid = false;
-              password.classList.add("error");
-              password.nextElementSibling.textContent = "Password is required";
-            } else if (password.value.trim().length < 8) {
-              isValid = false;
-              password.classList.add("error");
-              password.nextElementSibling.textContent =
-                "Password must be at least 8 characters";
-            } else if (password.value.match(numbers)) {
-              isValid = false;
-              password.classList.add("error");
-              password.nextElementSibling.textContent =
-                "Password must contain letters";
-            } else if (password.value.match(letters)) {
-              isValid = false;
-              password.classList.add("error");
-              password.nextElementSibling.textContent =
-                "Password must contain numbers";
-            } else {
-              password.classList.remove("error");
-              password.nextElementSibling.textContent = "";
-            }
-          };
-          Repassword.onkeyup = function () {
-            if (Repassword.value.trim() === "") {
-              isValid = false;
-              Repassword.classList.add("error");
-              Repassword.nextElementSibling.textContent =
-                "Confirm Password is required";
-            } else if (Repassword.value.trim() !== password.value.trim()) {
-              isValid = false;
-              Repassword.classList.add("error");
-              Repassword.nextElementSibling.textContent =
-                "Password does not match";
-            } else {
-              Repassword.classList.remove("error");
-              Repassword.nextElementSibling.textContent = "";
-            }
-          };
-
-          if (isValid) {
-            // If form is valid, you can submit it here
-            console.log("Form is valid");
-            // You can call your navigateToDashboard function here if the form is valid
-            //navigateToDashboard();
-          }
-        });
       window.addEventListener("load", function () {
         const loader = document.getElementById("loading-wrapper");
         setTimeout(() => {
@@ -272,6 +217,180 @@
             loader.style.display = "none";
           }, 1000);
         }, 1000);
+      });
+      // Select elements
+      const fullName = document.getElementById("fullName");
+      const phoneNumber = document.getElementById("phoneNumber");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const Repassword = document.getElementById("Repassword");
+      var dialog = document.getElementById("myDialog");
+      var buttons = document.getElementsByClassName("myButton");
+      var closeButton = document.getElementById("closebtn");
+
+      // // Error elements
+      const fullNameError = fullName.nextElementSibling || {};
+      const phoneNumberError = phoneNumber.nextElementSibling || {};
+      const emailError = email.nextElementSibling || {};
+      const passwordError = password.nextElementSibling || {};
+      const rePasswordError = Repassword.nextElementSibling || {};
+      console.log(fullNameError);
+      // Form submit handler
+      document.getElementById("signup-form").addEventListener("submit", (e) => {
+        // Prevent default submit
+        console.log("form submit");
+        e.preventDefault();
+
+        // Validate fields
+        validateField(fullName);
+        fullName.addEventListener("keyup", () => {
+          validateField(fullName);
+        });
+        validateField(phoneNumber);
+        phoneNumber.addEventListener("keyup", () => {
+          validateField(phoneNumber);
+        });
+        validateField(email);
+        email.addEventListener("keyup", () => {
+          validateField(email);
+        });
+        validateField(password);
+        password.addEventListener("keyup", () => {
+          validateField(password);
+        });
+        validateField(Repassword);
+        Repassword.addEventListener("keyup", () => {
+          validateField(Repassword);
+        });
+        if (isValid()) {
+          const newUser = {
+            fullName: fullName.value,
+            phoneNumber: phoneNumber.value,
+            email: email.value,
+            password: password.value,
+          };
+          let users = [];
+          const storedUsers = localStorage.getItem("users");
+          if (storedUsers) {
+            users = JSON.parse(storedUsers);
+          }
+          users.push(newUser);
+          localStorage.setItem("users", JSON.stringify(users));
+          console.log(users);
+          //form reset
+          document.getElementById("signup-form").reset();
+          dialog.showModal();
+        }
+      });
+
+      // Validation functions
+      function validateField(field) {
+        // Reset error
+        resetError(field);
+
+        let valid = false;
+
+        switch (field.id) {
+          case "fullName":
+            if (field.value === "") {
+              setError(fullNameError, "Full name is required");
+            } else {
+              valid = true;
+            }
+
+            break;
+
+          case "phoneNumber":
+            // Phone number validation
+            if (phoneNumber.value.trim() === "") {
+              setError(phoneNumberError, "Phone number is required");
+            } else if (phoneNumber.value.trim().length < 10) {
+              setError(
+                phoneNumberError,
+                "Phone number must be at least 10 characters"
+              );
+            } else if (phoneNumber.value.match(/^[A-Za-z]+$/)) {
+              setError(phoneNumberError, "Phone number must contain numbers");
+            } else {
+              valid = true;
+            }
+
+            break;
+
+          case "email":
+            if (!isValidEmail(field.value)) {
+              setError(emailError, "Invalid email");
+            } else {
+              valid = true;
+            }
+
+            break;
+
+          case "password":
+            // Password validation
+            if (password.value == "") {
+              setError(passwordError, "Password is required");
+            } else if (password.value.length < 8) {
+              setError(passwordError, "Password must be at least 8 characters");
+            } else if (password.value.match(/^[A-Za-z]+$/)) {
+              setError(passwordError, "Password must contain numbers");
+            } else if (password.value.match(/^[0-9]+$/)) {
+              setError(passwordError, "Password must contain letters");
+            } else {
+              valid = true;
+            }
+
+            break;
+
+          case "Repassword":
+            // Re-enter password validation
+            if (Repassword.value == "") {
+              setError(rePasswordError, "Re-enter password is required");
+            } else if (Repassword.value !== password.value) {
+              setError(rePasswordError, "Passwords do not match");
+            } else {
+              valid = true;
+            }
+
+            break;
+        }
+
+        return valid;
+      }
+
+      function setError(element, message) {
+        if (element) {
+          element.textContent = message;
+          element.previousElementSibling.classList.add("error");
+        }
+      }
+
+      function resetError(field) {
+        if (field.nextElementSibling) {
+          field.classList.remove("error");
+          field.nextElementSibling.textContent = "";
+        }
+      }
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function isValid() {
+        return !document.querySelectorAll(".error").length;
+      }
+
+      // button.addEventListener("click", function () {
+      //   dialog.showModal();
+      // });
+      Array.from(buttons).forEach(function (button) {
+        button.addEventListener("click", function () {
+          dialog.showModal();
+        });
+      });
+
+      closeButton.addEventListener("click", function () {
+        dialog.close();
       });
     </script>
   </body>
