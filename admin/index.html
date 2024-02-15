@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://kit.fontawesome.com/891622f836.js" crossorigin="anonymous"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <style>
     /* Set initial styles for the loading elements */
@@ -197,7 +198,7 @@
                   <th style="border: none;" colspan="2">Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <!-- <tbody>
                 <tr>
                   <td colspan="1">
                     <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
@@ -303,8 +304,8 @@
                     </div>
                   </td>
                 </tr>
-              </tbody>
-              <tbody>
+              </tbody> -->
+              <tbody id="blog-table-body">
 
               </tbody>
             </table>
@@ -603,12 +604,13 @@
 
         <section id="addBlog-section">
           <h1>New Post</h1>
-          <form action="./">
+          <form id="add-blog-form" action="./">
             <div>
               <label for="blog-title">
                 Blog Title
               </label>
               <input type="text" name="blog-title" id="blog-title">
+              <p class="error-message" ></p>
             </div>
             <div>
               <label for="blog-image">Blog image</label>
@@ -617,13 +619,15 @@
                 <button class="add-blog-image-btn">Add Image</button>
                 <input type="file" name="blog-image" id="blog-image" hidden>
                 <p>Or Drag or Drop file</p>
+                <div class="image-preview"></div> 
               </div>
-
+                 <p class="error-message"></p>
             </div>
             <div>
               <label for="blog-content">Blog content</label>
               <!-- ck editor -->
               <textarea name="blog-content" id="blog-content-editor"></textarea>
+              <p class="error-message" ></p>
             </div>
             <div>
               <label for="blog-category">
@@ -634,6 +638,7 @@
                 <option value="back-end">Back-end</option>
                 <option value="full-stack">Full-stack</option>
               </select>
+              <p class="error-message" ></p>
             </div>
             <div>
               <div class="switch-container">
@@ -648,7 +653,7 @@
 
 
               <div class="flex justify-between items-center">
-                <button class="create-post-btn" type="button">Create post</button>
+                <button class="create-post-btn" type="submit">Create post</button>
                 <button class="cancel-post-btn" type="reset">Cancel</button>
               </div>
 
