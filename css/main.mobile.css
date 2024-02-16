@@ -3,7 +3,7 @@
   --color-secondary: #f4f4f4;
   --font-color: #b8b8b8;
   --color-black: #121314;
-  --coloer-blue: #1777e5;
+  --color-blue: #1777e5;
   --text-color: #161d2b;
 }
 * {
@@ -59,8 +59,15 @@ body {
 }
 .nav-links {
   gap: 20px;
-  display: none !important;
+  display: none;
+
+  width: 100%;
 }
+.show {
+  display: grid;
+  width: 100%;
+}
+
 .nav-links .nav-btn {
   padding: 10px 20px;
 }
@@ -165,4 +172,7 @@ body {
   gap: 20px;
   align-items: center;
   justify-content: space-between;
+}
+.blog-header > h1 {
+  font-size: 40px;
 }
