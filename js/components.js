@@ -11,7 +11,7 @@ class Navbar extends HTMLElement {
               <p>ishimwe</p>
             </div>
           </div>
-          <div class="nav-hamburger">
+          <div id="hamburger-icon" class="nav-hamburger">
             <svg
               width="24"
               height="24"
