@@ -411,7 +411,6 @@ form.addEventListener("submit", (event) => {
   }
 
   if (!contentEditor) {
-    // Use CKEditor's getData() for content
     isValid = false;
     errorMessages[2].textContent = "Content is required";
   }
