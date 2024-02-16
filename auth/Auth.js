@@ -65,7 +65,13 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
       localStorage.setItem("auth", JSON.stringify(user));
       navigateToDashboard();
     } else {
-      alert("Invalid credentials");
+      // alert("Invalid credentials");
+      swal({
+        title: "Invalid credentials",
+        text: "Please enter a valid email and password",
+        icon: "error",
+        button: "Try again",
+      });
     }
 
     //navigateToDashboard();

@@ -486,9 +486,16 @@ textarea {
   background-color: #0e5a8a;
   transition: all 0.3s ease-in-out;
 }
+#addBlog-section {
+  overflow-y: auto;
+  margin-bottom: 20vh;
+}
 #addBlog-section form {
   display: grid;
+  height: 80vh;
+  overflow-y: auto;
   gap: 20px;
+  margin-bottom: 20vh;
 }
 #addBlog-section form > div {
   display: grid;
@@ -507,7 +514,6 @@ select {
   border-radius: 5px;
   border: 1px solid #d5d5d5;
   outline: none;
-
 }
 #addBlog-section form > div textarea {
   height: 30vh;
@@ -625,6 +631,10 @@ input:checked + .slider:before {
   background-color: #ff4d4d;
   color: white;
   transition: all 0.3s ease-in-out;
+}
+.error-message {
+  color: #ff4d4d;
+  font-size: 12px;
 }
 @media (max-width: 768px) {
   #sidebar {

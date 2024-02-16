@@ -9,6 +9,7 @@
   <link rel="stylesheet" media="screen and (max-width: 720px)" href="./css/main.mobile.css" />
   <script src="https://kit.fontawesome.com/891622f836.js" crossorigin="anonymous"></script>
   <link rel="import" href="./components/dialog.html">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <title>Sage Blog</title>
   <style>
     /* Set initial styles for the loading elements */
@@ -64,7 +65,7 @@
               <p>ishimwe</p>
             </div>
           </div>
-          <div class="nav-hamburger">
+          <div id="hamburger-icon" class="nav-hamburger">
             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
               <path d="M0 0h24v24H0z" fill="none" />
               <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" fill="#000" />
@@ -325,10 +326,10 @@
           </section>
         </aside>
     </section>
-    <section class="latest-blog">
+    <section class="latest-blog ">
       <h1>Latest Blog</h1>
       <p>Read my latest blog posts and tutorials</p>
-      <main class="blog-cards">
+      <main class="blog-cards home-latest">
         <div class="blog-card">
           <button id="like" class="like"><i class="fa-solid fa-2xl fa-heart"></i> <span id="counter">12</span></button>
           <img src="./assets/blog1.jpg" alt="blog-image" />
@@ -371,7 +372,7 @@
       </main>
       <!-- view more -->
       <div class="view-more">
-        <a href="#">View More</a>
+        <a href="./blog/blog.html">View More</a>
       </div>
 
     </section>
@@ -476,14 +477,21 @@
           <p style="font-size: 14px;">Feel free to reach out for any inquiries, project proposals, or just to say hello. Your message is
             important to me.</p>
             <form class="contact-form" action="./" method="post">
-              <div><input type="text" name="name" id="name" placeholder="Name"  />
+              <div>
+                <input type="text" name="name" id="name" placeholder="Name"  />
+                <p class="error-message"></p>
+              </div>
+              <div>
               <input type="email" name="email" id="email" placeholder="Email" />
+              <p class="error-message"></p>
                 </div>
                 <div>
                   <input type="text" name="subject" id="subject" placeholder="subject">
+                  <p class="error-message"></p>
                 </div>
                 <div>
                   <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                  <p class="error-message"></p>
                 </div>
                
             </form>
