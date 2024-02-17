@@ -180,33 +180,8 @@ document
   });
 
 // Retrieve blog data from LocalStorage
-const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
 
-// // Reference the main container where blog cards will be added
-// console.log(storedBlogs);
-// const blogContainer = document.querySelector(".blog-cards");
-
-// // Iterate through each blog entry and create a card
-// storedBlogs.forEach((blog) => {
-//   const blogCard = document.createElement("div");
-//   blogCard.classList.add("blog-card");
-
-//   blogCard.innerHTML = `
-//     <div class="like">
-//       <i class="fa-solid fa-2xl fa-heart"></i> <span>${blog.likes || 0}</span>
-//     </div>
-//     <img src="${blog.image}" alt="blog-image" />
-//     <h3>${blog.title}</h3>
-//     <p>${blog.content}</p>
-//     <article>
-//       <span>${blog.createdAt}</span>
-//       <a href="./blog-detail.html">Read more</a>
-//     </article>
-//   `;
-
-//   // Append the blog card to the container
-//   blogContainer.appendChild(blogCard);
-// });
+// Implement saving and loading like status as needed
 
 function displayPage(pageNumber) {
   const itemsPerPage = 5; // Adjust as needed
@@ -222,10 +197,9 @@ function displayPage(pageNumber) {
     blogCard.classList.add("blog-card");
     blogCard.innerHTML = `
           <div class="like">
-            <i class="fa-solid fa-2xl fa-heart"></i> <span>${
-              blog.likes || 0
-            }</span>
-          </div>
+  <i id="like-icon" class="fa-solid fa-xl fa-heart"></i>
+  <span id="like-count">${blog.likes.length}</span>
+</div>
           <img src="${blog.image}" alt="blog-image" />
           <h3>${blog.title}</h3>
           <p>
@@ -233,7 +207,9 @@ function displayPage(pageNumber) {
           </p>
           <article>
             <span>${blog.createdAt}</span>
-            <a href="blog/blog-detail.html?blogId=${blog.uuid}">Read more</a>
+            <a id="read-more-link" href="./blog-detail.html?blogId=${
+              blog.uuid
+            }">Read more</a>
           </article>
   `;
     blogContainer.appendChild(blogCard);
@@ -253,3 +229,34 @@ paginationLinks.forEach((link) => {
 const urlParams = new URLSearchParams(window.location.search);
 const blogId = urlParams.get("blogId");
 console.log("blog id", blogId);
+
+// Load blogs from localStorage or initialize an empty array
+let blogs = localStorage.getItem("blogs")
+  ? JSON.parse(localStorage.getItem("blogs"))
+  : [];
+
+// Find the relevant blog object based on `blogId` from the URL
+const blog = blogs.find((b) => b.uuid === blogId);
+
+// Check if read count exists in blog object, otherwise initialize it
+if (!blog.readCount) {
+  blog.readCount = 0; // Set initial read count to 0
+}
+
+// Update the read count in the UI
+const readCountElement = document.createElement("div");
+readCountElement.textContent = blog.readCount;
+
+// Add an event listener to the "Read more" link
+const readMoreLink = document.getElementById("read-more-link");
+
+readMoreLink.addEventListener("click", () => {
+  // Update the read count in the blog object
+  blog.readCount++;
+
+  // Update the read count in the UI
+  readCountElement.textContent = blog.readCount;
+
+  // Save the updated blogs array to localStorage
+  localStorage.setItem("blogs", JSON.stringify(blogs));
+});
