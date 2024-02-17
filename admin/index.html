@@ -198,113 +198,7 @@
                   <th style="border: none;" colspan="2">Action</th>
                 </tr>
               </thead>
-              <!-- <tbody>
-                <tr>
-                  <td colspan="1">
-                    <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
-                  </td>
-                  <td colspan="6">Blog about things that are real</td>
-                  <td colspan="2">Front-end</td>
-                  <td colspan="1">12</td>
-                  <td colspan="1">124</td>
-                  <td colspan="2">
-                    <div
-                      style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
-                      <button class="edit-btn">
-                        <i class="fa fa-edit"></i>
-                      </button>
-                      <hr>
-                      <button class="delete-btn">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="1">
-                    <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
-                  </td>
-                  <td colspan="6">Blog about things that are real</td>
-                  <td colspan="2">Front-end</td>
-                  <td colspan="1">12</td>
-                  <td colspan="1">124</td>
-                  <td colspan="2">
-                    <div
-                      style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
-                      <button class="edit-btn">
-                        <i class="fa fa-edit"></i>
-                      </button>
-                      <hr>
-                      <button class="delete-btn">
-                        <i class="fa fa-trash fa-primary"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="1">
-                    <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
-                  </td>
-                  <td colspan="6">Blog about things that are real</td>
-                  <td colspan="2">Front-end</td>
-                  <td colspan="1">12</td>
-                  <td colspan="1">124</td>
-                  <td colspan="2">
-                    <div
-                      style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
-                      <button class="edit-btn">
-                        <i class="fa fa-edit"></i>
-                      </button>
-                      <hr>
-                      <button class="delete-btn">
-                        <i class="fa fa-trash fa-primary"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="1">
-                    <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
-                  </td>
-                  <td colspan="6">Blog about things that are real</td>
-                  <td colspan="2">Front-end</td>
-                  <td colspan="1">12</td>
-                  <td colspan="1">124</td>
-                  <td colspan="2">
-                    <div
-                      style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
-                      <button class="edit-btn">
-                        <i class="fa fa-edit"></i>
-                      </button>
-                      <hr>
-                      <button class="delete-btn">
-                        <i class="fa fa-trash fa-primary"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="1">
-                    <img src="https://i.pravatar.cc/300/24/24" alt="blog image" />
-                  </td>
-                  <td colspan="6">Blog about things that are real</td>
-                  <td colspan="2">Front-end</td>
-                  <td colspan="1">12</td>
-                  <td colspan="1">124</td>
-                  <td colspan="2">
-                    <div
-                      style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
-                      <button class="edit-btn">
-                        <i class="fa fa-edit"></i>
-                      </button>
-                      <hr>
-                      <button class="delete-btn">
-                        <i class="fa fa-trash fa-primary"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody> -->
+             
               <tbody id="blog-table-body">
 
               </tbody>
@@ -377,20 +271,20 @@
 
           <div class="dashboard-cards">
             <div style="border-right: 1px solid #DDDDDD;" class="dashboard-card">
-              <h3>223</h3>
-              <p>Total users</p>
+              <h3 id="total-user">223</h3>
+              <p >Total users</p>
             </div>
             <div style="border-right: 1px solid #DDDDDD;" class="dashboard-card">
-              <h3>1,212</h3>
+              <h3 id="total-blog">1,212</h3>
               <p>Total Blogs</p>
             </div>
             <div style="border-right: 1px solid #DDDDDD;" class="dashboard-card">
-              <h3>1,234</h3>
+              <h3 id="total-visits">1,234</h3>
               <p>Total Reads</p>
             </div>
 
             <div class="dashboard-card">
-              <h3>232,032</h3>
+              <h3 id="total-comments">232,032</h3>
               <p>Total Comments</p>
             </div>
           </div>
@@ -399,96 +293,22 @@
             <canvas id="myChart" style="width:100%; max-height: 400px"></canvas>
 
           </article>
-          <div class="popular-blog-section">
+          <div id="popular-blog-section" class="popular-blog-section">
             <div style="display: flex;justify-content: space-between; margin: 10px 0; align-items: center;">
               <h1>Popular blogs</h1>
               <i class="fa fa-ellipsis-h"></i>
             </div>
             <hr>
-            <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
-              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
-                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="https://i.pravatar.cc/300/24/24"
-                  alt="blog1">
-                <div>
-                  <h1 style="text-transform: capitalize;">Css performance</h1>
-                  <p style="margin: 10px 0;font-size: 12px;color:rgb(67, 85, 85)">12 thursday 2024</p>
-                </div>
-                <p
-                  style="padding: 2px; font-size: 12px; border: 1px solid pink;border-radius: 4px; background-color: #FEE5DD;color:#FC5569; font-weight: 500;">
-                  Front-end</p>
-                <p
-                  style="padding: 2px; font-size: 12px; border: 1px solid rgb(97, 225, 38);border-radius: 4px; background-color: rgba(135, 198, 150, 0.126);color:rgb(128, 197, 83); font-weight: 500;">
-                  Back-end</p>
-              </aside>
-              <aside style="display: flex; gap: 20px; align-items: center;">
-                <p style="font-size: 14px;">
-                  <i class="fa fa-book-open"></i>
-                  <span>124</span>
-                </p>
-                <p style="font-size: 14px;">
-                  <i class="fa fa-eye"></i>
-                  <span>213</span>
-                </p>
-              </aside>
-            </article>
-            <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
-              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
-                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="https://i.pravatar.cc/300/24/24"
-                  alt="blog1">
-                <div>
-                  <h1 style="text-transform: capitalize;">Js in Css</h1>
-                  <p style="margin: 10px 0;font-size: 12px;color:rgb(67, 85, 85)">12 thursday 2024</p>
-                </div>
-                <p
-                  style="padding: 2px;font-size: 12px; border: 1px solid pink;border-radius: 4px; background-color: #FEE5DD;color:#FC5569; font-weight: 500;">
-
-                  Front-end</p>
-
-              </aside>
-              <aside style="display: flex; gap: 20px; align-items: center;">
-                <p style="font-size: 14px;">
-                  <i class="fa fa-book-open"></i>
-                  <span>124</span>
-                </p>
-                <p style="font-size: 14px;">
-                  <i class="fa fa-eye"></i>
-                  <span>213</span>
-                </p>
-              </aside>
-            </article>
-            <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
-              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
-                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="https://i.pravatar.cc/300/24/24"
-                  alt="blog1">
-                <div>
-                  <h1 style="text-transform: capitalize;">React js</h1>
-                  <p style="margin: 10px 0;font-size: 12px;color:rgb(67, 85, 85)">12 thursday 2024</p>
-                </div>
-                <p
-                  style="padding: 2px;font-size: 12px; border: 1px solid pink;border-radius: 4px; background-color: #FEE5DD;color:#FC5569; font-weight: 500;">
-                  Front-end</p>
-                <p
-                  style="padding: 2px;font-size: 12px; border: 1px solid rgb(97, 225, 38);border-radius: 4px; background-color: rgba(135, 198, 150, 0.126);color:rgb(128, 197, 83); font-weight: 500;">
-                  Back-end</p>
-              </aside>
-              <aside style="display: flex; gap: 20px; align-items: center;">
-                <p style="font-size: 14px;">
-                  <i class="fa fa-book-open"></i>
-                  <span>124</span>
-                </p>
-                <p style="font-size: 14px;">
-                  <i class="fa fa-eye"></i>
-                  <span>213</span>
-                </p>
-              </aside>
-            </article>
+          
+       
+         
           </div>
 
         </section>
         <section id="settings-section">
           <h1>Profile</h1>
           <main class="settings-container">
-            <form action="./" class=" flex flex-col items-center">
+            <form class="profile-form" action="./" class=" flex flex-col items-center">
               <!-- make a div for uploading profile image in the middle have camera icon full rounded -->
               <div class="profile-image-container">
                 <span class="camera-icon">
