@@ -489,8 +489,8 @@ blogData.forEach((blog) => {
                   </td>
                   <td colspan="6">${blog.title}</td>
                   <td colspan="2">${blog.category}</td>
-                  <td colspan="1">${blog.comments || 0}</td>
-                  <td colspan="1">${blog.likes || 0}</td>
+                  <td colspan="1">${blog.comments.length || 0}</td>
+                  <td colspan="1">${blog.likes.length || 0}</td>
                   <td colspan="2">
                     <div
                       style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
@@ -531,4 +531,114 @@ function handleDelete(event) {
     // Remove the row from the table (optional)
     event.target.closest("tr").remove();
   }
+}
+
+let totalVisits =
+  parseInt(JSON.parse(localStorage.getItem("totalVisits"))) || 0;
+console.log("total visits", totalVisits);
+//total users
+let totalUsers =
+  parseInt(JSON.parse(localStorage.getItem("users")).length) || 0;
+console.log("total users", totalUsers);
+let totalComments = 0;
+let totalLikes = 0;
+let totalBlogs = 0;
+
+blogData.forEach((blog, i) => {
+  // Assuming "comments" is an array within each blog object
+  totalBlogs = i;
+  totalComments += blog.comments.length;
+  totalLikes += blog.likes.length;
+});
+document.getElementById("total-user").textContent = totalUsers;
+document.getElementById("total-visits").textContent = totalVisits;
+document.getElementById("total-comments").textContent = totalComments;
+document.getElementById("total-blog").textContent = totalBlogs + 1;
+console.log("total totalLikes", totalLikes);
+console.log("Total comments:", totalComments);
+// get popular blog with many likes and comments to three blogs
+const popularBlogs = blogData
+  .sort((a, b) => b.comments.length - a.comments.length)
+  .slice(0, 3);
+console.log("popular blogs", popularBlogs);
+const popularBlogContainer = document.getElementById("popular-blog-section");
+popularBlogs.forEach((blog) => {
+  const div = document.createElement("div");
+  div.innerHTML = `
+ <article style="display: flex; justify-content: space-between;align-items: center; margin: 20px 0;">
+              <aside style="display: flex;gap: 20px; justify-content: space-between;align-items: center;">
+                <img style="height: 3rem; width: 3rem; border-radius: 100%;" src="${
+                  blog.image
+                }"
+                  alt="blog1">
+                <div>
+                  <h1 style="text-transform: capitalize;">${blog.title}</h1>
+                  <p style="margin: 10px 0;font-size: 12px;color:rgb(67, 85, 85)">12 thursday 2024</p>
+                </div>
+                <p
+                  style="padding: 2px; font-size: 12px; border: 1px solid pink;border-radius: 4px; background-color: #FEE5DD;color:#FC5569; font-weight: 500;">
+                  ${blog.category}</p>
+              </aside>
+              <aside style="display: flex; gap: 20px; align-items: center;">
+                <p style="font-size: 14px;">
+                  <i class="fa fa-book-open"></i>
+                  <span>${blog.comments.length || 0}</span>
+                </p>
+                <p style="font-size: 14px;">
+                  <i class="fa fa-eye"></i>
+                  <span>${blog.likes.length || 0}</span>
+                </p>
+              </aside>
+            </article>
+  `;
+  popularBlogContainer.appendChild(div);
+});
+const profileForm = document.querySelector(".profile-form");
+const saveButton = profileForm.querySelector("button");
+
+saveButton.addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  // Get auth email from localStorage
+  const authEmail = JSON.parse(localStorage.getItem("auth")) || {};
+
+  // Validate email input
+  console.log(authEmail.email);
+  const emailInput = profileForm.querySelector('input[type="email"]');
+  const newEmail = emailInput.value.trim();
+  if (!validateEmail(newEmail)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // Get users from localStorage
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+  // Find the user to update
+  const userIndex = users.findIndex((user) => user.email === authEmail.email);
+  if (userIndex === -1) {
+    alert("Error: User not found.");
+    return;
+  }
+
+  // Update user data
+  users[userIndex].email = newEmail; // Update email if necessary
+  // Update other user fields based on form inputs (you need to handle them here)
+
+  // Save updated users to localStorage
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // Update authEmail if email was changed
+  if (newEmail !== authEmail.email) {
+    localStorage.setItem("authEmail", newEmail);
+  }
+
+  // Display success message or redirect to a confirmation page
+  alert("User updated successfully!");
+});
+
+// Function to validate email (replace with your desired validation logic)
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
