@@ -73,7 +73,7 @@
           <h6><span>By Sage Ishimwe</span> | <span>May 20, 2024</span></h6>
         </article>
         <div class="blog-reactions">
-          <div class="blog-reaction">
+          <div id="likee" class="blog-reaction">
             <i class="fa fa-lg fa-thumbs-up"></i>
             <p>100</p>
           </div>
@@ -91,7 +91,7 @@
       <div class="blog-description"></div>
       <section class="comments">
         <h3>Comments</h3>
-        <div class="comment">
+        <!-- <div class="comment">
           <div class="comment-user">
             <img src="../assets/logo.png" alt="user" />
             <div>
@@ -100,8 +100,8 @@
             </div>
             <div class="reply">
               <img
-                height="20px"
-                width="20px"
+                height="10px"
+                width="10px"
                 src="../assets/reply.svg"
                 alt="reply"
               />
@@ -109,11 +109,16 @@
             </div>
           </div>
           <p>this is a comment</p>
-        </div>
+        </div> -->
+        <div id="comments"></div>
         <div class="leave-comment">
           <h1>Leave a Comment</h1>
-          <textarea cols="15" placeholder="Write Comment"></textarea>
-          <button>Comment</button>
+          <textarea
+            cols="15"
+            id="comment-text"
+            placeholder="Write Comment"
+          ></textarea>
+          <button id="comment-btn">Comment</button>
         </div>
       </section>
     </main>
@@ -198,47 +203,142 @@
       blogDate.textContent = blog.createdAt;
       blogDescription.innerHTML = blog.content;
       blogLikes.textContent = blog.likes.length || 0;
-      blogDislikes.textContent = blog.dislikes.length || 0; // Set the dislikes text to the number of dislikes
+      blogDislikes.textContent = 0; // Set the dislikes text to the number of dislikes
       blogComments.textContent = blog.comments.length || 0; // Set the comments text to the number of comments
+      document
+        .getElementById("comment-btn")
+        .addEventListener("mouseover", (event) => {
+          //check if user is logged in by checking if the user is in the local storage auth
+          if (!localStorage.getItem("auth")) {
+            console.log("user is not logged in");
+            alert("You need to login to comment");
+            window.location.href = "../auth/login.html";
+          }
 
-      const comments = blog.comments;
+          let loginUser = JSON.parse(localStorage.getItem("auth"));
 
-      const commentsSection = document.querySelector(".comments");
+          event.preventDefault();
+          console.log("comment button clicked");
+          const commentText = document.getElementById("comment-text").value;
+          let formattedDate = new Date().toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+          const newComment = {
+            id: generateUniqueId(),
+            text: commentText,
+            name: loginUser.fullName || "Anonymous",
+            timestamp: formattedDate,
+          };
+          // blog.comments.push(newComment);
+          console.log(newComment);
+          saveBlogDataToLocalStorage(newComment);
+          document.getElementById("comment-text").value = "";
+          // ... (display success message)
+          alert("Comment added successfully");
+        });
+      function saveBlogDataToLocalStorage(newComment) {
+        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
 
-      // Create a function that takes a comment object and returns an HTML string
-      const createCommentHTML = (comment) => {
-        // Use template literals to create an HTML string for the comment
-        return `
-    <div class="comment">
-      <div class="comment-user">
-        <img src="${comment.userImage}" alt="user" />
-        <div>
-          <h5>${comment.userName}</h5>
-          <p>${comment.date}</p>
-        </div>
-        <div class="reply">
-          <img
-            height="20px"
-            width="20px"
-            src="../assets/reply.svg"
-            alt="reply"
-          />
-          <a href="#">Reply</a>
-        </div>
-      </div>
-      <p>${comment.text}</p>
-    </div>
-  `;
-      };
+        // Find the correct blog object using its unique identifier
+        const blogIndex = blogs.findIndex((b) => b.uuid === blogId);
+        console.log(blogIndex, "blog index");
+        if (blogIndex !== -1) {
+          // Update comments only if blog found
+          // Update the comments array within the existing blog object
 
-      // Use the map method to create a new array of HTML strings for each comment
-      const commentsHTML = comments.map(createCommentHTML);
+          blogs[blogIndex].comments.push(newComment);
+        }
 
-      // Join the array of HTML strings into one HTML string
-      const commentsHTMLString = commentsHTML.join("");
+        localStorage.setItem("blogs", JSON.stringify(blogs));
+      }
+      function generateUniqueId() {
+        return Math.random().toString(36).substr(2, 9);
+      }
 
-      // Set the innerHTML of the comments section element to the comments HTML string
-      commentsSection.innerHTML = commentsHTMLString;
+      function saveLike(like) {
+        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+        const blogIndex = blogs.findIndex((b) => b.uuid === blogId);
+        if (blogIndex !== -1) {
+          // if already liked then remove like from it
+          const alreadyLiked = blogs[blogIndex].likes.find(
+            (l) => l.name === like.name
+          );
+          if (alreadyLiked) {
+            blogs[blogIndex].likes = blogs[blogIndex].likes.filter(
+              (l) => l.name !== like.name
+            );
+          } else {
+            blogs[blogIndex].likes.push(like);
+          }
+        }
+        localStorage.setItem("blogs", JSON.stringify(blogs));
+      }
+      document.getElementById("likee").addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("like button clicked");
+        const like = {
+          id: generateUniqueId(),
+          name: "sage",
+          timestamp: new Date().toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }),
+        };
+        saveLike(like);
+        // ... (display success message)
+        alert("Liked successfully");
+      });
+
+      function ShowComment(blog) {
+        blog.comments.forEach((comment) => {
+          const commentDiv = document.createElement("div");
+          commentDiv.classList.add("comment");
+          commentDiv.innerHTML = `
+          <div class="comment-user">
+            <img src="../assets/logo.png" alt="user" />
+            <div>
+              <h5>${comment.name}</h5>
+              <p>${comment.timestamp}</p>
+            </div>
+            <div class="reply">
+              <img
+                height="10px"
+                width="10px"
+                src="../assets/reply.svg"
+                alt="reply"
+              />
+              <a href="#">Reply</a>
+            </div>
+          </div>
+          <p>${comment.text}</p>
+        `;
+          document.getElementById("comments").appendChild(commentDiv);
+        });
+      }
+      ShowComment(blog);
+      // Load visited blogs and total visits from localStorage or initialize them
+      const visitedBlogs = localStorage.getItem("visitedBlogs")
+        ? JSON.parse(localStorage.getItem("visitedBlogs"))
+        : [];
+      let totalVisits = parseInt(localStorage.getItem("totalVisits")) || 0;
+
+      // Find the relevant blog object based on `blogId` from the URL
+
+      // Check if the blog has been visited before
+      const isVisited = visitedBlogs.includes(blogId);
+      totalVisits++;
+      localStorage.setItem("totalVisits", totalVisits.toString());
+
+      // Update the visited blogs array and total visits (if a new blog is visited)
+      if (!isVisited) {
+        visitedBlogs.push(blogId);
+        localStorage.setItem("visitedBlogs", JSON.stringify(visitedBlogs));
+      }
+
+      // Update UI elements
     </script>
   </body>
 </html>

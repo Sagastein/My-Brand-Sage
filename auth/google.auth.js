@@ -26,6 +26,15 @@ googleSignIn.addEventListener("click", () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
+      // let users = [];
+      // let storedUsers = localStorage.getItem("users") || [];
+      // console.log(storedUsers);
+      // if (storedUsers) {
+      //   users = JSON.parse(storedUsers);
+      //   users.push(user);
+      //   localStorage.setItem("users", JSON.stringify(users));
+      // }
+
       console.log(user);
       if (user) {
         localStorage.setItem("auth", JSON.stringify(user));

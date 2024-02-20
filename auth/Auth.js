@@ -11,7 +11,6 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
   var numbers = /^[0-9]+$/;
   var letters = /^[A-Za-z]+$/;
 
-  // Email validation
   if (email.value.trim() === "" || !email.value.includes("@")) {
     isValid = false;
     email.classList.add("error");
@@ -52,11 +51,10 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
   };
 
   if (isValid) {
-    //get email and password values
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     console.log(email, password);
-    // handle authentication get data from local storage and check if exist then set auth to true else invalid credentials
+
     var users = JSON.parse(localStorage.getItem("users")) || [];
     var user = users.find(function (user) {
       return user.email === email && user.password === password;
@@ -65,7 +63,6 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
       localStorage.setItem("auth", JSON.stringify(user));
       navigateToDashboard();
     } else {
-      // alert("Invalid credentials");
       swal({
         title: "Invalid credentials",
         text: "Please enter a valid email and password",
@@ -73,13 +70,15 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
         button: "Try again",
       });
     }
-
-    //navigateToDashboard();
   }
 });
 
 window.addEventListener("load", function () {
   const loader = document.getElementById("loading-wrapper");
+  var auth = JSON.parse(localStorage.getItem("auth"));
+  if (auth) {
+    navigateToDashboard();
+  }
   setTimeout(() => {
     loader.style.opacity = 0;
     setTimeout(() => {
