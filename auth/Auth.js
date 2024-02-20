@@ -75,6 +75,10 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
 
 window.addEventListener("load", function () {
   const loader = document.getElementById("loading-wrapper");
+  var auth = JSON.parse(localStorage.getItem("auth"));
+  if (auth) {
+    navigateToDashboard();
+  }
   setTimeout(() => {
     loader.style.opacity = 0;
     setTimeout(() => {
