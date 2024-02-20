@@ -31,6 +31,50 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
+function EditBlog(event) {
+  console.log("Edit Blog");
+  sections.forEach((section) => {
+    section.classList.remove("active");
+    if (section.id === `editBlog-section`) {
+      section.classList.add("active");
+    }
+  });
+  //get h1 child element of class addBlog-section
+  const h1 = document.querySelector("#editBlog-section h1");
+  h1.textContent = "Edit Blog";
+  const blogId = event.target.getAttribute("data-blog-id");
+  console.log("blog id edit", blogId);
+
+  const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  const blog = storedBlogs.find((blog) => blog.uuid === blogId);
+
+  let blogTextCK = document.getElementById("blog-content-editor-edit");
+  console.log("blog title", blogTextCK);
+  //insert data into ck editor
+  blogTextCK.insertHtml(blog.content);
+
+  document.getElementById("blog-title-edit").value = blog.title;
+  let imagePreview = document.querySelector(".image-preview");
+  imagePreview.innerHTML = "";
+  const div = document.createElement("div");
+  const img = document.createElement("img");
+  img.src = blog.image;
+  img.style.width = "30px";
+  imagePreview.appendChild(img);
+  imagePreview.appendChild(div);
+  imageContainer.classList.add("dropped-image");
+  document.getElementById("blog-category-edit").value = blog.category;
+  console.log(
+    "blog category",
+    document.getElementById("blog-content-editor-edit").value
+  );
+
+  console.log("blog to edit", blog.content);
+  console.log(storedBlogs);
+  const indexToUpdate = storedBlogs.findIndex((blog) => blog.uuid === blogId);
+  console.log(indexToUpdate);
+}
+
 document.getElementById("dashboard-section").classList.add("active");
 
 const hamburger = document.getElementById("hamburger");
@@ -106,6 +150,11 @@ window.addEventListener("load", function () {
   }, 1000);
 });
 ClassicEditor.create(document.querySelector("#blog-content-editor")).catch(
+  (error) => {
+    console.error(error);
+  }
+);
+ClassicEditor.create(document.querySelector("#blog-content-editor-edit")).catch(
   (error) => {
     console.error(error);
   }
@@ -342,11 +391,11 @@ blogData.forEach((blog) => {
                   <td colspan="2">
                     <div
                       style="display: flex; gap: 10px; padding: 1px 10px; border: 1px solid grey; width: 65px; border-radius: 5px;">
-                      <button class="edit-btn" >
-                        <i class="fa fa-edit"></i>
+                      <button data-blog-id="${blog.uuid}" class="edit-btn" >
+                        <i  class="fa fa-edit" data-blog-id="${blog.uuid}"></i>
                       </button>
                       <hr>
-                      <button class="delete-btn" data-blog-id="${blog.uuid}">
+                      <button  class="delete-btn" data-blog-id="${blog.uuid}">
                         <i class="fa fa-trash" data-blog-id="${blog.uuid}"></i>
                       </button>
                     </div>
@@ -354,6 +403,8 @@ blogData.forEach((blog) => {
                 </tr>
     `;
   const deleteButton = row.querySelector(".delete-btn");
+  const editButton = row.querySelector(".edit-btn");
+  editButton.addEventListener("click", EditBlog);
   deleteButton.addEventListener("click", handleDelete);
   tableBlog.appendChild(row);
 });

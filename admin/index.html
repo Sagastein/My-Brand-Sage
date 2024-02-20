@@ -480,6 +480,63 @@
 
           </form>
         </section>
+        <section id="editBlog-section">
+          <h1>New Post</h1>
+          <form id="add-blog-form" action="./">
+            <div>
+              <label for="blog-title-edit">
+                Blog Title
+              </label>
+              <input type="text" name="blog-title-edit" id="blog-title-edit">
+              <p class="error-message" ></p>
+            </div>
+            <div>
+              <label for="blog-image-edit">Blog image</label>
+              <div class="blog-image-input-container">
+
+                <button class="add-blog-image-btn">Add Image</button>
+                <input type="file" name="blog-image-edit" id="blog-image-edit">
+                <p>Or Drag or Drop file</p>
+                <div class="image-preview"></div> 
+              </div>
+                 <p class="error-message"></p>
+            </div>
+            <div>
+              <label for="blog-content">Blog content</label>
+              <!-- ck editor -->
+              <textarea name="blog-content" id="blog-content-editor-edit"></textarea>
+              <p class="error-message" ></p>
+            </div>
+            <div>
+              <label for="blog-category-edit">
+                Blog Category
+              </label>
+              <select name="blog-category-edit" id="blog-category-edit">
+                <option value="front-end">Front-end</option>
+                <option value="back-end">Back-end</option>
+                <option value="full-stack">Full-stack</option>
+              </select>
+              <p class="error-message" ></p>
+            </div>
+            <div>
+              <div class="switch-container">
+                <label for="publishSwitch">Publish</label>
+                <label class="switch">
+
+
+                  <input type="checkbox" id="publishSwitch">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+
+              <div class="flex justify-between items-center">
+                <button class="create-post-btn" type="submit">edit post</button>
+                <button class="cancel-post-btn" type="reset">Cancel</button>
+              </div>
+
+          </form>
+        </section>
 
     </div>
   </div>
