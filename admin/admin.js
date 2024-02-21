@@ -138,7 +138,7 @@ var myChart = new Chart(ctx, {
 });
 window.addEventListener("load", function () {
   var auth = JSON.parse(localStorage.getItem("auth"));
-  if (!auth) {
+  if (auth.role !== "admin") {
     return (window.location.href = "/auth/login.html");
   }
   const loader = document.getElementById("loading-wrapper");
@@ -260,7 +260,8 @@ if (localStorage && localStorage.getItem("users")) {
 } else {
   console.warn("No users found in local storage!");
 }
-const messages = JSON.parse(localStorage.getItem("messages"));
+let messages = [];
+messages = JSON.parse(localStorage.getItem("messages"));
 messages.forEach((message) => {
   const row = `
    <a href="#" class="message-row flex items-center justify-between">
