@@ -81,7 +81,7 @@
           <li><a href="./blog/blog.html">Blog</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
-          <button class="nav-btn">Get a Quote</button>
+          <button id="nav-btn-nav" class="nav-btn">Get a Quote</button>
         </ul>
       </nav>
     </header>
@@ -562,6 +562,39 @@
   function navigateToLogin() {
     window.location.href = "./auth/Login.html";
   }
+  
+let navBtn = document.getElementById("nav-btn-nav");
+console.log(navBtn);
+//check if user is authenticated and change it to logout
+let authObject;
+try {
+  authObject = JSON.parse(localStorage.getItem("auth"));
+} catch (error) {
+  console.error("Error parsing auth data:", error);
+}
+const email = authObject && authObject.email ? authObject.email : "";
+if (email) {
+  navBtn.textContent = "Logout";
+  navBtn.href = "../auth/Login.html";
+  navBtn.addEventListener("click", () => {
+    localStorage.removeItem("auth");
+    swl({
+      title: "Logged out",
+      text: "You have been logged out",
+      icon: "success",
+      button: "Ok",
+    }).then(() => {
+      window.location.reload();
+    
+    });
+  });
+} else {
+  navBtn.textContent = "Login";
+  navBtn.addEventListener("click", () => {
+    window.location.href = "../auth/Login.html";
+  });
+}
+
  
 </script>
 <script src="./js/App.js"></script>

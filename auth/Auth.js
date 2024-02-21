@@ -59,16 +59,25 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
     var user = users.find(function (user) {
       return user.email === email && user.password === password;
     });
-    if (user) {
-      localStorage.setItem("auth", JSON.stringify(user));
-      navigateToDashboard();
-    } else {
+    if (!user) {
       swal({
         title: "Invalid credentials",
         text: "Please enter a valid email and password",
         icon: "error",
         button: "Try again",
       });
+    } else if (user.role != "admin") {
+      swal({
+        title: "User Authenticated",
+        text: "You have been authenticated successfully!",
+        icon: "success",
+        button: "Done",
+      });
+      localStorage.setItem("auth", JSON.stringify(user));
+      window.location.href = "../index.html";
+    } else {
+      localStorage.setItem("auth", JSON.stringify(user));
+      navigateToDashboard();
     }
   }
 });
@@ -77,7 +86,11 @@ window.addEventListener("load", function () {
   const loader = document.getElementById("loading-wrapper");
   var auth = JSON.parse(localStorage.getItem("auth"));
   if (auth) {
-    navigateToDashboard();
+    if (auth.role === "admin") {
+      navigateToDashboard();
+    } else {
+      window.location.href = "../index.html";
+    }
   }
   setTimeout(() => {
     loader.style.opacity = 0;
