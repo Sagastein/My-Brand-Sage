@@ -166,16 +166,16 @@ let blogs = localStorage.getItem("blogs")
 
 const blog = blogs.find((b) => b.uuid === blogId);
 
-if (!blog.readCount) {
+if (!blog?.readCount) {
   blog.readCount = 0;
 }
 
 const readCountElement = document.createElement("div");
-readCountElement.textContent = blog.readCount;
+readCountElement.textContent = blog?.readCount;
 const readMoreLink = document.getElementById("read-more-link");
 
 readMoreLink.addEventListener("click", () => {
   blog.readCount++;
-  readCountElement.textContent = blog.readCount;
+  readCountElement.textContent = blog?.readCount;
   localStorage.setItem("blogs", JSON.stringify(blogs));
 });
