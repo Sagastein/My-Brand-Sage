@@ -496,7 +496,7 @@
                
             </form>
             <div id="error-messages"></div>
-           <button onclick="handleSubmit()" class="contact-btn">LETS CONNECT  <i class="fa-solid  fa-arrow-right-long fa-rotate-by" style="margin-left: 2px; justify-self: flex-start;"></i></button>
+           <button id="send-message" onclick="handleSubmit()" class="contact-btn">LETS CONNECT  <i class="fa-solid  fa-arrow-right-long fa-rotate-by" style="margin-left: 2px; justify-self: flex-start;"></i></button>
         </aside>
       </main>
     </section>
@@ -578,6 +578,7 @@ if (email) {
   navBtn.href = "../auth/Login.html";
   navBtn.addEventListener("click", () => {
     localStorage.removeItem("auth");
+    localStorage.removeItem("accessToken")
     swl({
       title: "Logged out",
       text: "You have been logged out",
@@ -587,6 +588,7 @@ if (email) {
       window.location.reload();
     
     });
+    window.location.href = "/";
   });
 } else {
   navBtn.textContent = "Login";
