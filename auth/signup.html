@@ -238,7 +238,7 @@
       const rePasswordError = Repassword.nextElementSibling || {};
       console.log(fullNameError);
       // Form submit handler
-      document.getElementById("signup-form").addEventListener("submit", (e) => {
+      document.getElementById("signup-form").addEventListener("submit", async (e) => {
         // Prevent default submit
         console.log("form submit");
         e.preventDefault();
@@ -270,19 +270,39 @@
             phoneNumber: phoneNumber.value,
             email: email.value,
             password: password.value,
-            role: "user",
           };
-          let users = [];
-          const storedUsers = localStorage.getItem("users");
-          if (storedUsers) {
-            users = JSON.parse(storedUsers);
-          }
-          users.push(newUser);
-          localStorage.setItem("users", JSON.stringify(users));
-          console.log(users);
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          };
+           try {
+            const response = await fetch('http://localhost:8000/api/v1/users/', options)
+            const data = await response.json()
+            if(response.ok){
+              dialog.showModal()
+              document.getElementById("signup-form").reset();
+            }else{
+        swal({
+                title: "Error",
+                text: data.message || "Error while Signing up",
+                icon: "error",
+                button: "OK",
+            });
+            }
+           } catch (error) {
+            
+            swal({
+                title: "Error",
+                text: "Error Connecting to the server",
+                icon: "error",
+                button: "Try Again",
+            });
+           }
           //form reset
-          document.getElementById("signup-form").reset();
-          dialog.showModal();
+          
         }
       });
 
@@ -295,8 +315,10 @@
 
         switch (field.id) {
           case "fullName":
-            if (field.value === "") {
+            if (field.value === "" ) {
               setError(fullNameError, "Full name is required");
+            }else if(field.value.length < 8){
+                 setError(fullNameError, "Full name is must be at least 8 character (valid)");
             } else {
               valid = true;
             }
