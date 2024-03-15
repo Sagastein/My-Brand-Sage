@@ -193,7 +193,7 @@
                 <tr style="border-top: none;">
                   <th style="border: none;" colspan="1">Image</th>
                   <th style="border: none;" colspan="6">Blog title</th>
-                  <th style="border: none;" colspan="2">Category</th>
+                  <th style="border: none;" colspan="2">Status</th>
                   <th style="border: none;" colspan="1">Comments</th>
                   <th style="border: none;" colspan="1">Likes</th>
                   <th style="border: none;" colspan="2">Action</th>
@@ -225,7 +225,7 @@
           <header>
             <div class="search-container w-25 my-2">
               <button><i class="fas fa-search"></i></button>
-              <input type="text" placeholder="search ..." />
+              <input type="text" id="usersearch" placeholder="search ..." />
             </div>
           </header>
           <main class="user-container">
@@ -272,20 +272,20 @@
 
           <div class="dashboard-cards">
             <div style="border-right: 1px solid #DDDDDD;" class="dashboard-card">
-              <h3 id="total-user">223</h3>
+              <h3 id="total-user"></h3>
               <p >Total users</p>
             </div>
             <div style="border-right: 1px solid #DDDDDD;" class="dashboard-card">
-              <h3 id="total-blog">1,212</h3>
+              <h3 id="total-blog"></h3>
               <p>Total Blogs</p>
             </div>
             <div style="border-right: 1px solid #DDDDDD;" class="dashboard-card">
-              <h3 id="total-visits">1,234</h3>
+              <h3 id="total-visits"></h3>
               <p>Total Reads</p>
             </div>
 
             <div class="dashboard-card">
-              <h3 id="total-comments">232,032</h3>
+              <h3 id="total-comments"></h3>
               <p>Total Comments</p>
             </div>
           </div>
@@ -309,43 +309,43 @@
         <section id="settings-section">
           <h1>Profile</h1>
           <main class="settings-container">
-            <form class="profile-form" action="./" class=" flex flex-col items-center">
+            <form id="profile-form"  class="profile-form"   class=" flex flex-col items-center">
               <!-- make a div for uploading profile image in the middle have camera icon full rounded -->
               <div class="profile-image-container">
                 <span class="camera-icon">
                   <i class="fa fa-2xl fa-camera"></i>
                 </span>
               </div>
-              <h6 class="my-2">upload Image</h6>
+              <h6 class="my-2 ">upload Image</h6>
               <article class="flex profile-form flex-col">
                 <div class="grid grid-cols-2">
                   <div class="grid">
                     <label for="fname">First Name</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="fname" id="fname">
                   </div>
                   <div class="grid">
                     <label for="lname">last Name</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="" id="lname">
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div>
                     <div class="grid">
                       <label for="email">Email</label>
-                      <input type="email" name="" id="">
+                      <input type="email" name="email" id="email">
                     </div>
                     <div class="grid">
                       <label for="phone">Phone</label>
-                      <input type="tel" name="" id="">
+                      <input type="tel" name="phone" id="phone">
                     </div>
                   </div>
                   <div class="flex flex-col">
                     <label for="bio">bio</label>
-                    <textarea style="height: 80%;" name="" id=""></textarea>
+                    <textarea style="height: 80%;" name="bio" id="bio"></textarea>
                   </div>
                 </div>
                 <div class="flex justify-center items-center">
-                  <button>Save</button>
+                  <button id="profile-submit" type="submit">Save</button>
                 </div>
               </article>
 
@@ -371,7 +371,7 @@
                   <i class="fas fa-archive"></i>
                 </button>
                 <hr>
-                <button class="bg-transparent border-none">
+                <button id="delete-messages" class="bg-transparent border-none">
                   <i class="fas fa-trash"></i>
                 </button>
               </div>
@@ -494,17 +494,17 @@
               <label for="blog-image-edit">Blog image</label>
               <div class="blog-image-input-container">
 
-                <button class="add-blog-image-btn">Add Image</button>
-                <input type="file" name="blog-image-edit" id="blog-image-edit">
+                <button type="button" class="add-blog-image-btn-edit">Add Image</button>
+                <input type="file" name="blog-image-edit" id="blog-image-edit" hidden>
                 <p>Or Drag or Drop file</p>
-                <div class="image-preview"></div> 
+                <div class="image-preview-edit"></div> 
               </div>
                  <p class="error-message"></p>
             </div>
             <div>
               <label for="blog-content">Blog content</label>
               <!-- ck editor -->
-              <textarea name="blog-content" id="blog-content-editor-edit"></textarea>
+              <textarea name="blog-content" rows="15" id="blog-content-editor-edit"></textarea>
               <p class="error-message" ></p>
             </div>
             <div>
