@@ -6,6 +6,7 @@
     <title>Sage | Blog</title>
     <link rel="stylesheet" href="../css/main.desktop.css" />
     <link rel="shortcut icon" href="../assets/logo.png" type="image/png" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link
       rel="stylesheet"
       media="screen and (max-width: 720px)"
@@ -78,10 +79,6 @@
             <p>100</p>
           </div>
           <div class="blog-reaction">
-            <i class="fa fa-lg fa-thumbs-down"></i>
-            <p>10</p>
-          </div>
-          <div class="blog-reaction">
             <i class="fa fa-lg fa-comments"></i>
             <p>20</p>
           </div>
@@ -91,25 +88,7 @@
       <div class="blog-description"></div>
       <section class="comments">
         <h3>Comments</h3>
-        <!-- <div class="comment">
-          <div class="comment-user">
-            <img src="../assets/logo.png" alt="user" />
-            <div>
-              <h5>John Doe</h5>
-              <p>May 20, 2025</p>
-            </div>
-            <div class="reply">
-              <img
-                height="10px"
-                width="10px"
-                src="../assets/reply.svg"
-                alt="reply"
-              />
-              <a href="#">Reply</a>
-            </div>
-          </div>
-          <p>this is a comment</p>
-        </div> -->
+
         <div id="comments"></div>
         <div class="leave-comment">
           <h1>Leave a Comment</h1>
@@ -176,169 +155,243 @@
         loader.style.opacity = 0;
         loader.style.display = "none";
       });
+
+      function showLoading() {
+        const loader = document.getElementById("loader");
+        loader.style.display = "block";
+        loader.style.opacity = 1;
+      }
+      function hideLoading() {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0;
+        loader.style.display = "none";
+      }
+ 
       const urlParams = new URLSearchParams(window.location.search);
       const blogId = urlParams.get("blogId");
-      console.log("blog id", blogId);
-      const blogs = JSON.parse(localStorage.getItem("blogs"));
-      const blog = blogs.find((b) => b.uuid === blogId);
-      console.log("blog", blog);
-      if (blog === undefined) {
-        window.location.href = "./blog.html";
-      }
-      const blogImage = document.querySelector(".blog-image img");
-      const blogTitle = document.querySelector(".blog-title");
-      const blogAuthor = document.querySelector(".blog-head span:first-child");
-      const blogDate = document.querySelector(".blog-head span:last-child");
-      const blogLikes = document.querySelector(".blog-reaction:first-child p");
-      const blogDislikes = document.querySelector(
-        ".blog-reaction:nth-child(2) p"
-      );
-      const blogComments = document.querySelector(
-        ".blog-reaction:last-child p"
-      );
-      const blogDescription = document.querySelector(".blog-description");
-      blogImage.src = blog.image;
-      blogTitle.textContent = blog.title;
-      blogAuthor.textContent = "By " + blog.author || "sage";
-      blogDate.textContent = blog.createdAt;
-      blogDescription.innerHTML = blog.content;
-      blogLikes.textContent = blog.likes.length || 0;
-      blogDislikes.textContent = 0; // Set the dislikes text to the number of dislikes
-      blogComments.textContent = blog.comments.length || 0; // Set the comments text to the number of comments
-      document
-        .getElementById("comment-btn")
-        .addEventListener("mouseover", (event) => {
-          //check if user is logged in by checking if the user is in the local storage auth
-          if (!localStorage.getItem("auth")) {
-            console.log("user is not logged in");
-            alert("You need to login to comment");
-            window.location.href = "../auth/login.html";
-          }
 
-          let loginUser = JSON.parse(localStorage.getItem("auth"));
+      async function fetchBlogById() {
+        try {
+          showLoading();
 
-          event.preventDefault();
-          console.log("comment button clicked");
-          const commentText = document.getElementById("comment-text").value;
-          let formattedDate = new Date().toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
-          const newComment = {
-            id: generateUniqueId(),
-            text: commentText,
-            name: loginUser.fullName || "Anonymous",
-            timestamp: formattedDate,
-          };
-          // blog.comments.push(newComment);
-          console.log(newComment);
-          saveBlogDataToLocalStorage(newComment);
-          document.getElementById("comment-text").value = "";
-          // ... (display success message)
-          alert("Comment added successfully");
-        });
-      function saveBlogDataToLocalStorage(newComment) {
-        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-
-        // Find the correct blog object using its unique identifier
-        const blogIndex = blogs.findIndex((b) => b.uuid === blogId);
-        console.log(blogIndex, "blog index");
-        if (blogIndex !== -1) {
-          // Update comments only if blog found
-          // Update the comments array within the existing blog object
-
-          blogs[blogIndex].comments.push(newComment);
-        }
-
-        localStorage.setItem("blogs", JSON.stringify(blogs));
-      }
-      function generateUniqueId() {
-        return Math.random().toString(36).substr(2, 9);
-      }
-
-      function saveLike(like) {
-        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-        const blogIndex = blogs.findIndex((b) => b.uuid === blogId);
-        if (blogIndex !== -1) {
-          // if already liked then remove like from it
-          const alreadyLiked = blogs[blogIndex].likes.find(
-            (l) => l.name === like.name
+          const response = await fetch(
+            `http://localhost:8000/api/v1/blogs/${blogId}`
           );
-          if (alreadyLiked) {
-            blogs[blogIndex].likes = blogs[blogIndex].likes.filter(
-              (l) => l.name !== like.name
-            );
-          } else {
-            blogs[blogIndex].likes.push(like);
-          }
-        }
-        localStorage.setItem("blogs", JSON.stringify(blogs));
-      }
-      document.getElementById("likee").addEventListener("click", (event) => {
-        event.preventDefault();
-        console.log("like button clicked");
-        const like = {
-          id: generateUniqueId(),
-          name: "sage",
-          timestamp: new Date().toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }),
-        };
-        saveLike(like);
-        // ... (display success message)
-        alert("Liked successfully");
-      });
+          const data = await response.json();
 
-      function ShowComment(blog) {
-        blog.comments.forEach((comment) => {
+          if (response.ok) {
+            displayBlogDetails(data);
+          } else {
+            swal({
+              title: "Error",
+              text: data.message || "Failed to fetch blog details",
+              icon: "error",
+              button: "Try again",
+            });
+          }
+        } catch (error) {
+          swal({
+            title: "Error",
+            text: "An error occurred while fetching blog details. Please try again later.",
+            icon: "error",
+            button: "OK",
+          });
+        } finally {
+          hideLoading();
+        }
+      }
+
+      function displayBlogDetails(blog) {
+        const blogImage = document.querySelector(".blog-image img");
+        const blogTitle = document.querySelector(".blog-title");
+        const blogAuthor = document.querySelector(
+          ".blog-head span:first-child"
+        );
+        const blogDate = document.querySelector(".blog-head span:last-child");
+        const blogLikes = document.querySelector(
+          ".blog-reaction:first-child p"
+        );
+        const blogDislikes = document.querySelector(
+          ".blog-reaction:nth-child(2) p"
+        );
+        const blogComments = document.querySelector(
+          ".blog-reaction:last-child p"
+        );
+        const blogDescription = document.querySelector(".blog-description");
+
+        blogImage.src = blog.image;
+        blogTitle.textContent = blog.title;
+        blogAuthor.textContent = "By Sage Ishimwe"; // Replace with the actual author name if available
+        blogDate.textContent = new Date(blog.createdAt).toLocaleDateString();
+        blogDescription.innerHTML = blog.content;
+        blogLikes.textContent = blog.likes.length || 0;
+        blogDislikes.textContent = 0; // Set the dislikes text to 0 (assuming no dislikes data)
+        blogComments.textContent = blog.comments.length || 0;
+
+        displayComments(blog.comments);
+      }
+
+      function displayComments(comments) {
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = "";
+       
+        comments.forEach((comment) => {
           const commentDiv = document.createElement("div");
           commentDiv.classList.add("comment");
           commentDiv.innerHTML = `
-          <div class="comment-user">
-            <img src="../assets/logo.png" alt="user" />
-            <div>
-              <h5>${comment.name}</h5>
-              <p>${comment.timestamp}</p>
-            </div>
-            <div class="reply">
-              <img
-                height="10px"
-                width="10px"
-                src="../assets/reply.svg"
-                alt="reply"
-              />
-              <a href="#">Reply</a>
-            </div>
-          </div>
-          <p>${comment.text}</p>
-        `;
-          document.getElementById("comments").appendChild(commentDiv);
+      <div class="comment-user">
+        <img src="${comment.user.image} alt="user" />
+        <div>
+          <h5>${comment.user ? comment.user.username : "Anonymous"}</h5>
+          
+          <p>${comment.content}</p>
+        </div>
+        <div class="reply">
+          <img height="10px" width="10px" src="../assets/reply.svg" alt="reply" />
+          <a href="#">Reply</a>
+        </div>
+      </div>
+     <p>${new Date(comment.createdAt).toLocaleDateString()}</p>
+    `;
+          commentsContainer.appendChild(commentDiv);
         });
       }
-      ShowComment(blog);
-      // Load visited blogs and total visits from localStorage or initialize them
-      const visitedBlogs = localStorage.getItem("visitedBlogs")
-        ? JSON.parse(localStorage.getItem("visitedBlogs"))
-        : [];
-      let totalVisits = parseInt(localStorage.getItem("totalVisits")) || 0;
 
-      // Find the relevant blog object based on `blogId` from the URL
+      async function addComment() {
+        const commentText = document
+          .getElementById("comment-text")
+          .value.trim();
+        if (!commentText) return;
 
-      // Check if the blog has been visited before
-      const isVisited = visitedBlogs.includes(blogId);
-      totalVisits++;
-      localStorage.setItem("totalVisits", totalVisits.toString());
+        const user = JSON.parse(localStorage.getItem("auth"));
+        const accessToken = localStorage.getItem("accessToken");
+        if (!user) {
+          swal({
+            title: "Login Required",
+            text: "You need to be logged in to leave a comment",
+            icon: "warning",
+            button: "OK",
+          });
+          return;
+        }
 
-      // Update the visited blogs array and total visits (if a new blog is visited)
-      if (!isVisited) {
-        visitedBlogs.push(blogId);
-        localStorage.setItem("visitedBlogs", JSON.stringify(visitedBlogs));
+        try {
+          showLoading();
+
+          const options = {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `${accessToken}`,
+            },
+            body: JSON.stringify({ content: commentText }),
+          };
+
+          const response = await fetch(
+            `http://localhost:8000/api/v1/comments/${blogId}`,
+            options
+          );
+          const data = await response.json();
+          console.log(data);
+          if (response.ok) {
+            document.getElementById("comment-text").value = "";
+            fetchBlogById(); // Fetch the updated blog details including the new comment
+            swal({
+              title: "Success",
+              text: "Comment added successfully",
+              icon: "success",
+              button: "OK",
+            });
+          } else {
+            swal({
+              title: "Error",
+              text: data.message || "Failed to add comment",
+              icon: "error",
+              button: "Try again",
+            });
+          }
+        } catch (error) {
+          console.log(error);
+          swal({
+            title: "Error",
+            text: "An error occurred while adding the comment. Please try again later.",
+            icon: "error",
+            button: "OK",
+          });
+        } finally {
+          hideLoading();
+        }
       }
 
-      // Update UI elements
+      async function likeOrUnlikeBlog() {
+        const user = JSON.parse(localStorage.getItem("auth"));
+        const accessToken = localStorage.getItem("accessToken");
+        if (!user) {
+          swal({
+            title: "Login Required",
+            text: "You need to be logged in to like or unlike a blog",
+            icon: "warning",
+            button: "OK",
+          });
+          return;
+        }
+
+        try {
+          showLoading();
+
+          const options = {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `${accessToken}`,
+            },
+            // Assuming you want to like the blog, otherwise pass 'true' to unlike
+          };
+
+          const response = await fetch(
+            `http://localhost:8000/api/v1/blogs/like/${blogId}`,
+            options
+          );
+          const data = await response.json();
+          console.log(data);
+          if (response.ok) {
+            fetchBlogById(); // Fetch the updated blog details including the like/unlike
+            swal({
+              title: "Success",
+              text: data.message || "Blog liked/unliked successfully",
+              icon: "success",
+              button: "OK",
+            });
+          } else {
+            swal({
+              title: "Error",
+              text: data.message || "Failed to like/unlike the blog",
+              icon: "error",
+              button: "Try again",
+            });
+          }
+        } catch (error) {
+          console.log(error);
+          swal({
+            title: "Error",
+            text: "An error occurred while liking/unliking the blog. Please try again later.",
+            icon: "error",
+            button: "OK",
+          });
+        } finally {
+          hideLoading();
+        }
+      }
+
+      document
+        .getElementById("comment-btn")
+        .addEventListener("click", addComment);
+      document
+        .getElementById("likee")
+        .addEventListener("click", likeOrUnlikeBlog);
+
+      fetchBlogById();
     </script>
   </body>
 </html>
