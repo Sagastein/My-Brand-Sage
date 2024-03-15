@@ -443,6 +443,13 @@ input[type="checkbox"]:checked {
   height: 70vh;
   margin: auto;
   padding: 20px;
+
+}
+.profile-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .profile-image-container {
   display: flex;
@@ -454,6 +461,8 @@ input[type="checkbox"]:checked {
   width: 80px;
   border-radius: 100%;
   background-color: #d5d5d5;
+  border: 1px solid green;
+  margin:  0 auto;
 }
 
 .profile-form input,
