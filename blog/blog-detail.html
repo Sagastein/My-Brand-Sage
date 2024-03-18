@@ -166,7 +166,7 @@
         loader.style.opacity = 0;
         loader.style.display = "none";
       }
- 
+
       const urlParams = new URLSearchParams(window.location.search);
       const blogId = urlParams.get("blogId");
 
@@ -175,7 +175,7 @@
           showLoading();
 
           const response = await fetch(
-            `http://localhost:8000/api/v1/blogs/${blogId}`
+            `https://my-brand-bankend.onrender.com/api/v1/blogs/${blogId}`
           );
           const data = await response.json();
 
@@ -234,7 +234,7 @@
       function displayComments(comments) {
         const commentsContainer = document.getElementById("comments");
         commentsContainer.innerHTML = "";
-       
+
         comments.forEach((comment) => {
           const commentDiv = document.createElement("div");
           commentDiv.classList.add("comment");
@@ -289,7 +289,7 @@
           };
 
           const response = await fetch(
-            `http://localhost:8000/api/v1/comments/${blogId}`,
+            `https://my-brand-bankend.onrender.com/api/v1/comments/${blogId}`,
             options
           );
           const data = await response.json();
@@ -350,7 +350,7 @@
           };
 
           const response = await fetch(
-            `http://localhost:8000/api/v1/blogs/like/${blogId}`,
+            `https://my-brand-bankend.onrender.com/api/v1/blogs/like/${blogId}`,
             options
           );
           const data = await response.json();

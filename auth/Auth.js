@@ -1,4 +1,4 @@
-var url = "http://localhost:8000/api/v1";
+var url = "https://my-brand-bankend.onrender.com/api/v1";
 function navigateToDashboard() {
   window.location.href = "../admin/index.html";
 }
@@ -91,7 +91,7 @@ document
       try {
         console.log(email, password);
         const response = await fetch(
-          "http://localhost:8000/api/v1/users/login",
+          "https://my-brand-bankend.onrender.com/api/v1/users/login",
           {
             method: "POST",
             headers: {

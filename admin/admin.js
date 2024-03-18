@@ -31,52 +31,6 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-// function EditBlog(event) {
-//   console.log("Edit Blog");
-//   sections.forEach((section) => {
-//     section.classList.remove("active");
-//     if (section.id === `editBlog-section`) {
-//       section.classList.add("active");
-//     }
-//   });
-//   //get h1 child element of class addBlog-section
-//   const h1 = document.querySelector("#editBlog-section h1");
-//   h1.textContent = "Edit Blog";
-//   const blogId = event.target.getAttribute("data-blog-id");
-//   console.log("blog id edit", blogId);
-
-//   const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-//   const blog = storedBlogs.find((blog) => blog.uuid === blogId);
-
-//   let blogTextCK = document.getElementById("blog-content-editor-edit");
-//   console.log("blog title", blogTextCK);
-//   //insert data into ck editor
-//   blogTextCK.insertHtml(blog.content);
-
-//   document.getElementById("blog-title-edit").value = blog.title;
-//   let imagePreview = document.querySelector(".image-preview");
-//   imagePreview.innerHTML = "";
-//   const div = document.createElement("div");
-//   const img = document.createElement("img");
-//   img.src = blog.image;
-//   img.style.width = "30px";
-//   imagePreview.appendChild(img);
-//   imagePreview.appendChild(div);
-//   imageContainer.classList.add("dropped-image");
-//   document.getElementById("blog-category-edit").value = blog.category;
-//   console.log(
-//     "blog category",
-//     document.getElementById("blog-content-editor-edit").value
-//   );
-
-//   console.log("blog to edit", blog.content);
-//   console.log(storedBlogs);
-//   const indexToUpdate = storedBlogs.findIndex((blog) => blog.uuid === blogId);
-//   console.log(indexToUpdate);
-// }
-// Function to handle image upload and preview
-
-// Add event listener to file input element
 
 function EditBlog(event) {
   console.log("Edit Blog");
@@ -95,7 +49,7 @@ function EditBlog(event) {
   const blogId = event.target.getAttribute("data-blog-id");
   console.log("blog id edit", blogId);
 
-  fetch(`http://localhost:8000/api/v1/blogs/${blogId}`, {
+  fetch(`https://my-brand-bankend.onrender.com/api/v1/blogs/${blogId}`, {
     headers: {
       Authorization: localStorage.getItem("accessToken"),
     },
@@ -147,7 +101,6 @@ function EditBlog(event) {
 }
 const editBlogForm = document.getElementById("edit-blog-form");
 
-
 editBlogForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -165,7 +118,7 @@ editBlogForm.addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch(
-      `http://localhost:8000/api/v1/blogs/${blogId}`,
+      `https://my-brand-bankend.onrender.com/api/v1/blogs/${blogId}`,
       {
         method: "PATCH",
         headers: {
@@ -394,11 +347,14 @@ async function fetchUsers() {
   const accessToken = localStorage.getItem("accessToken");
   try {
     console.log("loading");
-    const response = await fetch("http://localhost:8000/api/v1/users/", {
-      headers: {
-        Authorization: accessToken,
-      },
-    });
+    const response = await fetch(
+      "https://my-brand-bankend.onrender.com/api/v1/users/",
+      {
+        headers: {
+          Authorization: accessToken,
+        },
+      }
+    );
     const users = await response.json();
     console.log(users);
     if (response.ok) {
@@ -485,7 +441,10 @@ function toggleUserStatus(userId) {
   const accessToken = localStorage.getItem("accessToken");
   const xhr = new XMLHttpRequest();
 
-  xhr.open("PATCH", `http://localhost:8000/api/v1/users/status/${userId}`);
+  xhr.open(
+    "PATCH",
+    `https://my-brand-bankend.onrender.com/api/v1/users/status/${userId}`
+  );
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader("Authorization", `${accessToken}`);
 
@@ -532,11 +491,14 @@ fetchUsers();
 
 async function fetchMessages() {
   try {
-    const response = await fetch("http://localhost:8000/api/v1/messages", {
-      headers: {
-        Authorization: `${localStorage.getItem("accessToken")}`,
-      },
-    });
+    const response = await fetch(
+      "https://my-brand-bankend.onrender.com/api/v1/messages",
+      {
+        headers: {
+          Authorization: `${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
     const messages = await response.json();
 
     if (response.ok) {
@@ -616,7 +578,7 @@ function deleteCheckedMessages() {
   }).then((willDelete) => {
     if (willDelete) {
       messageIds.forEach((id) => {
-        fetch(`http://localhost:8000/api/v1/messages/${id}`, {
+        fetch(`https://my-brand-bankend.onrender.com/api/v1/messages/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: localStorage.getItem("accessToken"),
@@ -699,13 +661,16 @@ form.addEventListener("submit", async (event) => {
   formData.append("isPublished", publishCheckbox.checked);
 
   try {
-    const response = await fetch("http://localhost:8000/api/v1/blogs", {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-      body: formData,
-    });
+    const response = await fetch(
+      "https://my-brand-bankend.onrender.com/api/v1/blogs",
+      {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+        body: formData,
+      }
+    );
 
     if (response.ok) {
       const responseData = await response.json();
@@ -735,7 +700,9 @@ form.addEventListener("submit", async (event) => {
 
 async function fetchBlogs() {
   try {
-    const response = await fetch("http://localhost:8000/api/v1/blogs");
+    const response = await fetch(
+      "https://my-brand-bankend.onrender.com/api/v1/blogs"
+    );
     const blogs = await response.json();
 
     if (response.ok) {
@@ -758,7 +725,7 @@ async function fetchBlogs() {
   }
 }
 function fetchPopularBlogs() {
-  fetch("http://localhost:8000/api/v1/blogs/popular", {
+  fetch("https://my-brand-bankend.onrender.com/api/v1/blogs/popular", {
     headers: {
       Authorization: localStorage.getItem("accessToken"),
     },
@@ -858,7 +825,7 @@ function populateBlogTable(blogs) {
 async function handleDelete(blogId) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/v1/blogs/${blogId}`,
+      `https://my-brand-bankend.onrender.com/api/v1/blogs/${blogId}`,
       {
         method: "DELETE",
         headers: {
@@ -899,9 +866,9 @@ async function handleDelete(blogId) {
 // Call fetchBlogs to populate the blogs table
 fetchBlogs();
 
-let totalVisits = parseInt(JSON.parse(localStorage.getItem("totalVisits"))) || 0;
+let totalVisits =
+  parseInt(JSON.parse(localStorage.getItem("totalVisits"))) || 0;
 document.getElementById("total-visits").textContent = totalVisits;
-
 
 const profileForm = document.querySelector(".profile-form");
 const saveButton = profileForm.querySelector("button");
@@ -1018,33 +985,33 @@ document
     }
   });
 // Fetch blog stats from backend
-fetch('http://localhost:8000/api/v1/blogs/stats')
-    .then(response => {
-        if (!response.ok) {
-            if (response.status === 401) {
-                // Call logout function if unauthorized
-                logout();
-            }
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Update total users, comments, and blogs with fetched data
-        const totalUsers = data.totalUsers || 0;
-        const totalComments = data.totalComments || 0;
-        const totalBlogs = data.totalBlogs || 0;
+fetch("https://my-brand-bankend.onrender.com/api/v1/blogs/stats")
+  .then((response) => {
+    if (!response.ok) {
+      if (response.status === 401) {
+        // Call logout function if unauthorized
+        logout();
+      }
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    // Update total users, comments, and blogs with fetched data
+    const totalUsers = data.totalUsers || 0;
+    const totalComments = data.totalComments || 0;
+    const totalBlogs = data.totalBlogs || 0;
 
-      // Update HTML elements with fetched data
-      document.getElementById('total-user').textContent = totalUsers;
-        document.getElementById("total-comments").textContent = totalComments;
-        document.getElementById("total-blog").textContent = totalBlogs;
+    // Update HTML elements with fetched data
+    document.getElementById("total-user").textContent = totalUsers;
+    document.getElementById("total-comments").textContent = totalComments;
+    document.getElementById("total-blog").textContent = totalBlogs;
 
-        console.log("Total users:", totalUsers);
-        console.log("Total comments:", totalComments);
-        console.log("Total blogs:", totalBlogs);
-    })
-    .catch(error => {
-        console.error('Error fetching blog stats:', error);
-        // Handle error - Show error message or retry
-    });
+    console.log("Total users:", totalUsers);
+    console.log("Total comments:", totalComments);
+    console.log("Total blogs:", totalBlogs);
+  })
+  .catch((error) => {
+    console.error("Error fetching blog stats:", error);
+    // Handle error - Show error message or retry
+  });

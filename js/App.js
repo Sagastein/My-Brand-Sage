@@ -51,31 +51,7 @@ async function handleSubmit() {
     hour: "2-digit",
     minute: "2-digit",
   });
-  // if (isValid) {
-  //   let newMessage = {
-  //     uuid: Math.random().toString(36).substr(2, 9),
-  //     name: name.value,
-  //     email: email.value,
-  //     subject: subject.value,
-  //     message: message.value,
-  //     time: formattedTime,
-  //   };
-  //   console.log("Form Submitted Successfully");
-  //   document.getElementsByTagName("form")[0].reset();
-  //   let messages = [];
-  //   let storedMessages = JSON.parse(localStorage.getItem("messages"));
-  //   if (storedMessages) {
-  //     messages = storedMessages;
-  //   }
-  //   messages.push(newMessage);
-  //   localStorage.setItem("messages", JSON.stringify(messages));
-  //   swal({
-  //     title: "Well Done",
-  //     text: "Sent message successfully",
-  //     icon: "success",
-  //     button: "Done",
-  //   });
-  // }
+
   if (isValid) {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -91,13 +67,16 @@ async function handleSubmit() {
 
     try {
       showLoading();
-      const response = await fetch("http://localhost:8000/api/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newMessage),
-      });
+      const response = await fetch(
+        "https://my-brand-bankend.onrender.com/api/v1/messages",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newMessage),
+        }
+      );
 
       const data = await response.json();
 
@@ -180,54 +159,15 @@ document
     document.querySelector(".nav-links").classList.toggle("show");
   });
 
-// function displayPage(pageNumber) {
-//   const itemsPerPage = 5;
-//   const startIndex = (pageNumber - 1) * itemsPerPage;
-//   const endIndex = startIndex + itemsPerPage;
-//   let blogData = JSON.parse(localStorage.getItem("blogs")) || [];
-//   const blogContainer = document.querySelector(".blog-cards");
-//   blogContainer.innerHTML = "";
 
-//   for (let i = startIndex; i < endIndex && i < blogData.length; i++) {
-//     const blog = blogData[i];
-//     const blogCard = document.createElement("div");
-//     blogCard.classList.add("blog-card");
-//     blogCard.innerHTML = `
-//           <div class="like">
-//   <i id="like-icon" class="fa-solid fa-xl fa-heart"></i>
-//   <span id="like-count">${blog.likes.length}</span>
-// </div>
-//           <img src="${blog.image}" alt="blog-image" />
-//           <h3>${blog.title}</h3>
-//           <p>
-//            ${blog.content.slice(0, 50) + "..."}
-//           </p>
-//           <article>
-//             <span>${blog.createdAt}</span>
-//             <a id="read-more-link" href="/blog/blog-detail.html?blogId=${
-//               blog.uuid
-//             }">Read more</a>
-//           </article>
-//   `;
-//     blogContainer.appendChild(blogCard);
-//   }
-// }
-// displayPage(1);
-
-// const paginationLinks = document.querySelectorAll(".pagination a");
-// paginationLinks.forEach((link) => {
-//   link.addEventListener("click", (event) => {
-//     event.preventDefault();
-//     const pageNumber = parseInt(link.textContent);
-//     displayPage(pageNumber);
-//   });
-// });
 async function fetchBlogs() {
   try {
     // Show loading indicator
     console.log("loading");
 
-    const response = await fetch("http://localhost:8000/api/v1/blogs");
+    const response = await fetch(
+      "https://my-brand-bankend.onrender.com/api/v1/blogs"
+    );
     const data = await response.json();
 
     if (response.ok) {
@@ -294,16 +234,4 @@ let blogs = localStorage.getItem("blogs")
 
 const blog = blogs.find((b) => b.uuid === blogId);
 
-// if (!blog?.readCount) {
-//   blog.readCount = 0;
-// }
 
-// const readCountElement = document.createElement("div");
-// readCountElement.textContent = blog?.readCount;
-// const readMoreLink = document.getElementById("read-more-link");
-
-// readMoreLink.addEventListener("click", () => {
-//   blog.readCount++;
-//   readCountElement.textContent = blog?.readCount;
-//   localStorage.setItem("blogs", JSON.stringify(blogs));
-// });
